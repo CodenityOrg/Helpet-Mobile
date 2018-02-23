@@ -1,7 +1,9 @@
-package com.kincodi.helpet.helpetmobile;
+package com.kincodi.helpet.helpetmobile.presentation.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.kincodi.helpet.helpetmobile.R;
 
 public class MainActivity extends AppCompatActivity {
 
