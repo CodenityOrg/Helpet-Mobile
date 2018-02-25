@@ -2,24 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kincodi.helpet.helpetmobile">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/Api_Key"/>
+            android:value="@string/Api_Key" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
             android:name=".presentation.ui.activities.MainActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".presentation.ui.activities.WelcomeActivity"
             android:allowBackup="true"
@@ -35,11 +32,9 @@
             </intent-filter>
         </activity>
         <activity
-
-            android:theme="@style/AppTheme"
-            android:name=".presentation.ui.activities.MapActivity">
-
-        </activity>
+            android:name=".presentation.ui.activities.MapActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".presentation.ui.activities.LoginActivity"></activity>
     </application>
 
 </manifest>

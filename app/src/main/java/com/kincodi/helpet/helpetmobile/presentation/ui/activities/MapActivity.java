@@ -36,20 +36,15 @@ public class MapActivity extends AppCompatActivity {
 
                     if (ActivityCompat.shouldShowRequestPermissionRationale(MapActivity.this,
                             Manifest.permission.ACCESS_FINE_LOCATION)) {
-
                     } else {
-
                         ActivityCompat.requestPermissions(MapActivity.this,
                                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                                 PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
                     }
-
                 }
             }
         });
     }
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions,
