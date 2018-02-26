@@ -5,5 +5,5 @@ package com.kincodi.helpet.helpetmobile.domain.interactors.base;
  */
 
 public interface Interactor {
-    void executor();
+    void execute();
 }
