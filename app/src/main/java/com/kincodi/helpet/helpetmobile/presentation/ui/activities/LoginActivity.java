@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     public void initPresenters(){
         loginUserPresenter = new LoginUserPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), this, userRepository);
     }
-    @Override public void onLogged() {
+        @Override public void onLogged() {
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();
