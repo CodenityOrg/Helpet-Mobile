@@ -18,14 +18,16 @@ public class LoginUserPresenterImpl extends AbstractPresenter implements LoginUs
     private UserRepository mUserRepository;
     public LoginUserPresenterImpl(Executor executor, MainThread mainThread,
                                   LoginUserPresenter.View view,
-                                  UserRepository mUserRepository) {
+                                  UserRepository userRepository) {
         super(executor,mainThread);
         mView = view;
-        mUserRepository = mUserRepository;
+        mUserRepository = userRepository;
     }
     @Override public void login(String email, String password) {
-        LoginUserInteractor loginUserInteractor = new LoginUserInteractorImpl(mExecutor, mMainThread, this, mUserRepository, email, password);
-        loginUserInteractor.execute;
+        LoginUserInteractor loginUserInteractor = new LoginUserInteractorImpl(
+                mExecutor, mMainThread, this,
+                mUserRepository, email, password);
+        loginUserInteractor.execute();
     }
     @Override public void onLogged() {
         mView.onLogged();

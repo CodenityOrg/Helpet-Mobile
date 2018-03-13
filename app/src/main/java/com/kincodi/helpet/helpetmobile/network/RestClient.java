@@ -20,7 +20,7 @@ public class RestClient {
     /**
      * This is our main backend/server URL.
      */
-    public static final String REST_API_URL = "https://api.getprettyny.com/";
+    public static final String REST_API_URL = "https://helpet-webapp.herokuapp.com/";
 
     private static Retrofit s_retrofit;
 

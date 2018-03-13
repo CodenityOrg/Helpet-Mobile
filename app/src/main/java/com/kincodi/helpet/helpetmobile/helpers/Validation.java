@@ -11,12 +11,14 @@ import android.net.NetworkInfo;
 import com.kincodi.helpet.helpetmobile.App;
 
 public class Validation {
+
     public static boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) App.getInstance()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
+
     public static boolean enabledGPS(){
         LocationManager manager = (LocationManager) App.getInstance().getSystemService(Context.LOCATION_SERVICE);
         return manager.isProviderEnabled(LocationManager.GPS_PROVIDER);

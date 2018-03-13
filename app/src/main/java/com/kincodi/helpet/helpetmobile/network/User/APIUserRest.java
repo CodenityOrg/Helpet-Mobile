@@ -13,13 +13,10 @@ import retrofit2.http.POST;
 public interface APIUserRest {
 
 
-    @POST("user/login")
+    @POST("/login")
     Call<User> login(@Body User user);
-    @POST("user/login-oauth")
+    @POST("/login-oauth")
     Call<User> loginOAuth(@Body User user);
-    @POST("user/set-user")
+    @POST("/registro")
     Call<User> register(@Body User user);
-
-
-
 }
