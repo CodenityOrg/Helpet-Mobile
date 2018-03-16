@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.kincodi.helpet.helpetmobile">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -37,7 +38,11 @@
         <activity
             android:name=".presentation.ui.activities.LoginActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".presentation.ui.activities.RegisterActivity"></activity>
+        <activity android:name=".presentation.ui.activities.RegisterActivity" />
+        <activity
+
+            tools:replace="android:name"
+            android:name=".presentation.ui.activities.PostActivity"></activity>
     </application>
 
 </manifest>

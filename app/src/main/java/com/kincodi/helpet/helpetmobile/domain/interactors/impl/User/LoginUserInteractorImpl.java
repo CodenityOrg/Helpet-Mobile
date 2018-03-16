@@ -19,7 +19,8 @@ import retrofit2.Response;
  * Created by Julio on 20/02/2018.
  */
 
-public class LoginUserInteractorImpl extends AbstractInteractor implements LoginUserInteractor {
+public class LoginUserInteractorImpl extends AbstractInteractor
+        implements LoginUserInteractor {
 
     private UserRepository mUserRepository;
     private String mEmail;
@@ -43,7 +44,9 @@ public class LoginUserInteractorImpl extends AbstractInteractor implements Login
         User user = new User();
         user.setEmail(mEmail);
         user.setPassword(mPassword);
+
         Log.d("mEmail",mEmail);
+
         Response result = mUserRepository.login(user);
         if(result!=null){
             if(result.isSuccessful()   ){

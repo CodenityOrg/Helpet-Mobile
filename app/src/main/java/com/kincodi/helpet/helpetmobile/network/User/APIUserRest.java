@@ -15,8 +15,10 @@ public interface APIUserRest {
 
     @POST("/login")
     Call<User> login(@Body User user);
+
     @POST("/login-oauth")
     Call<User> loginOAuth(@Body User user);
+
     @POST("/registro")
     Call<User> register(@Body User user);
 }
