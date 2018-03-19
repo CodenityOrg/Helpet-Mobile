@@ -26,4 +26,10 @@
     <string name="register_loading">Registrando ...</string>
 
     <string name="title_login">LOGIN</string>
+
+    <string name="location">Ubicacion</string>
+    <string name="contact">Persona de Contacto</string>
+    <string name="number_contect">Celular de Contacto</string>
+    <string name="description">Description</string>
+    <string name="publisher">Publicar</string>
 </resources>

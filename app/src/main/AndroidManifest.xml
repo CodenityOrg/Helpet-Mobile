@@ -33,22 +33,28 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".presentation.ui.activities.LoginActivity"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".presentation.ui.activities.RegisterActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".presentation.ui.activities.PostActivity"
+            android:theme="@style/AppTheme"
+            tools:replace="android:name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:theme="@style/AppTheme"
-            android:name=".presentation.ui.activities.RegisterActivity" >
-        </activity>
-        <activity
-            android:theme="@style/AppTheme"
             tools:replace="android:name"
-            android:name=".presentation.ui.activities.PostActivity"></activity>
+            android:name=".presentation.ui.activities.NewPostActivity">
+        </activity>
     </application>
 
 </manifest>
