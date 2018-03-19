@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();
-        Intent i = new Intent(this,MapActivity.class);
+        Intent i = new Intent(this,PostActivity.class);
         startActivity(i);
     }
     @Override public void onFailed(String message) {
