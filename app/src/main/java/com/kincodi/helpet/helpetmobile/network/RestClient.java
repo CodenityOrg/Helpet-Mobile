@@ -1,5 +1,8 @@
 package com.kincodi.helpet.helpetmobile.network;
 
+import com.kincodi.helpet.helpetmobile.storage.sharedprederences.ConfigSharedPreferences;
+import com.kincodi.helpet.helpetmobile.storage.sharedprederences.UserSharedPreferences;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +23,7 @@ public class RestClient {
     /**
      * This is our main backend/server URL.
      */
-    public static final String REST_API_URL = "https://api.getprettyny.com/";
+    public static final String REST_API_URL = "http://192.168.0.12:3000/";
 
     private static Retrofit s_retrofit;
 
@@ -43,8 +46,8 @@ public class RestClient {
                             @Override
                             public Response intercept(Interceptor.Chain chain) throws IOException {
                                 Request request = chain.request().newBuilder()
-                                       // .addHeader("api-token", ConfigSharedPreferences.restoreRembToken())
-                                       // .addHeader("user-id", UserSharedPreferences.restoreUser().getId() + "")
+                                        //.addHeader("api-token", ConfigSharedPreferences.restoreRembToken())
+                                        //.addHeader("user-id", UserSharedPreferences.restoreUser().getId() + "")
                                         .build();
                                 //Response originalResponse = chain.proceed(request);
 

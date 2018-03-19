@@ -8,11 +8,42 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title_login"
+        android:text="Registro"
         android:textSize="30dp"
         android:textColor="#fff"
         android:layout_margin="20dp"/>
     <EditText
+        android:id="@+id/edtName"
+        android:textColor="#ffffff"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fdedit"
+        android:layout_margin="10dp"
+        android:hint="nombre"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#fff"/>
+    <EditText
+        android:textColor="#ffffff"
+        android:id="@+id/edtLastName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fdedit"
+        android:layout_margin="10dp"
+        android:hint="apellido"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#fff"/>
+    <EditText
+        android:textColor="#ffffff"
+        android:id="@+id/edtPhone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fdedit"
+        android:layout_margin="10dp"
+        android:hint="Telefono"
+        android:inputType="phone"
+        android:textColorHint="#fff"/>
+    <EditText
+        android:textColor="#ffffff"
         android:id="@+id/edtEmail"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -21,7 +52,9 @@
         android:hint="email"
         android:inputType="textEmailAddress"
         android:textColorHint="#fff"/>
+
     <EditText
+        android:textColor="#ffffff"
         android:id="@+id/edtPassword"
         android:inputType="textPassword"
         android:layout_width="250dp"
@@ -30,27 +63,15 @@
         android:layout_margin="10dp"
         android:hint="*******"
         android:textColorHint="#fff"/>
-    <Button
-        android:id="@+id/btnSigIn"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Iniciar"
-        android:textColor="#fff"
-        android:background="#3498db"/>
+
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="Registro"
-
         android:background="#3498db"
         android:textColor="#fff"
         android:layout_margin="10dp"/>
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="facebook"
-        android:textColor="#fff"
-        android:background="#2980b9"/>
+
 
 </LinearLayout>

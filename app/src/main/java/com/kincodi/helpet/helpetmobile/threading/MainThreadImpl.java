@@ -1,6 +1,7 @@
 package com.kincodi.helpet.helpetmobile.threading;
 
 import android.os.Handler;
+import android.os.Looper;
 
 import com.kincodi.helpet.helpetmobile.domain.executor.MainThread;
 
@@ -23,5 +24,8 @@ public class MainThreadImpl implements MainThread {
             sMainThread = new MainThreadImpl();
         }
         return sMainThread;
+    }
+    private MainThreadImpl() {
+        mHandler = new Handler(Looper.getMainLooper());
     }
 }

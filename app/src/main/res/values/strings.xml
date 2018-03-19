@@ -23,5 +23,7 @@
 
 
     <string name="login_loading">Iniciando ...</string>
+    <string name="register_loading">Registrando ...</string>
 
+    <string name="title_login">LOGIN</string>
 </resources>

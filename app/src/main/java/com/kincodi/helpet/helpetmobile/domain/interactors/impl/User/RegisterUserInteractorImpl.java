@@ -1,63 +1,53 @@
 package com.kincodi.helpet.helpetmobile.domain.interactors.impl.User;
 
-import android.util.Log;
-
 import com.kincodi.helpet.helpetmobile.domain.executor.Executor;
 import com.kincodi.helpet.helpetmobile.domain.executor.MainThread;
-import com.kincodi.helpet.helpetmobile.domain.interactors.LoginUserInteractor;
+import com.kincodi.helpet.helpetmobile.domain.interactors.RegisterUserInteractor;
 import com.kincodi.helpet.helpetmobile.domain.interactors.base.AbstractInteractor;
 import com.kincodi.helpet.helpetmobile.domain.model.User;
 import com.kincodi.helpet.helpetmobile.domain.repository.UserRepository;
-import com.kincodi.helpet.helpetmobile.presentation.ui.activities.LoginActivity;
-import com.kincodi.helpet.helpetmobile.storage.sharedprederences.ConfigSharedPreferences;
 import com.kincodi.helpet.helpetmobile.storage.sharedprederences.UserSharedPreferences;
 
 import retrofit2.Response;
 
-
-/**
- * Created by Julio on 20/02/2018.
- */
-
-public class LoginUserInteractorImpl extends AbstractInteractor
-        implements LoginUserInteractor {
-
+public class RegisterUserInteractorImpl extends AbstractInteractor implements RegisterUserInteractor {
     private UserRepository mUserRepository;
+    private String mName;
+    private String mLastName;
+    private String mPhone;
     private String mEmail;
     private String mPassword;
     private MainThread mMainThread;
-        private LoginUserInteractor.Callback mCallback;
+    private RegisterUserInteractor.Callback mCallback;
 
-    public LoginUserInteractorImpl(Executor threadExecutor,
-                                   MainThread mainThread,
-                                   Callback callback,
-                                   UserRepository userRepository,
-                                   String email, String password) {
+    public RegisterUserInteractorImpl(Executor threadExecutor,
+                                      MainThread mainThread,
+                                      Callback callback,
+                                      UserRepository userRepository,
+                                      String name,String lastname, String phone,
+                                      String email, String password) {
         super(threadExecutor, mainThread);
         mUserRepository = userRepository;
+        mName = name;
+        mLastName = lastname;
+        mPhone = phone;
         mEmail = email;
         mPassword = password;
         mMainThread = mainThread;
         mCallback = callback;
     }
-    @Override public void run() {
-        User user = new User();
+
+    @Override
+    public void run() {
+        User user  = new User();
+        user.setFirstName(mName);
+        user.setLastName(mLastName);
         user.setEmail(mEmail);
+        user.setPhone(mPhone);
         user.setPassword(mPassword);
-
-        Log.d("mEmail",mEmail);
-
-        Response result = mUserRepository.login(user);
-
+        Response result = mUserRepository.register(user);
         if(result!=null){
-            Log.d("tetetetete",result.toString());
-            Log.d("tetetetete", String.valueOf(result.isSuccessful()));
-
-            if(result.isSuccessful()){
-                Log.d("tetetetete",result.toString());
-
-                user = (User)result.body();
-                //UserSharedPreferences.saveUser(user);
+            if(result.isSuccessful()   ){
                 loginSuccess();
             }else{
                 String message = getMessage(result.code());
@@ -71,14 +61,14 @@ public class LoginUserInteractorImpl extends AbstractInteractor
     private void notifyError(final String message){
         mMainThread.post(new Runnable() {
             @Override public void run() {
-                mCallback.onLoginFailed(message);
+                mCallback.onRegisterFailed(message);
             }
         });
     }
     private void loginSuccess(){
         mMainThread.post(new Runnable() {
             @Override public void run() {
-                mCallback.onLogged();
+                mCallback.onRegistered();
             }
         });
     }
@@ -86,13 +76,13 @@ public class LoginUserInteractorImpl extends AbstractInteractor
         String message;
         switch (code){
             case 401:
-                message = "Usuario o contraseña incorrectos";
+                message = "Datos  incorrectos";
                 break;
             case 400:
                 message = "Intentar nuevamente";
                 break;
             default:
-                message = "Error en el incio de session";
+                message = "Error en el registro";
         }
         return message;
     }

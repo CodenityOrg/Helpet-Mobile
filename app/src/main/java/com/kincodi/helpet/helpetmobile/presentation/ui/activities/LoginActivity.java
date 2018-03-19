@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,23 +18,36 @@ import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.User.LoginUs
 import com.kincodi.helpet.helpetmobile.storage.UserRepositoryImpl;
 import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class LoginActivity extends AppCompatActivity implements LoginUserPresenter.View{
-    EditText edtEmail,edtPassword;
+    @BindView(R.id.edtEmail) EditText edtEmail;
+    @BindView(R.id.edtPassword) EditText edtPassword;
+
     private LoginUserPresenterImpl loginUserPresenter;
     ProgressDialog progressDialog;
     private UserRepository userRepository;
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         userRepository = new UserRepositoryImpl();
         initPresenters();
+        ButterKnife.bind(this);
     }
     public void initPresenters(){
-        loginUserPresenter = new LoginUserPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), this, userRepository);
+        loginUserPresenter = new LoginUserPresenterImpl(
+                ThreadExecutor.getInstance(),
+                MainThreadImpl.getInstance(),
+                this, userRepository);
     }
     @Override public void onLogged() {
+        Log.d("sdfasdfsafsd","sdfsdfasdfsd");
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();
@@ -44,14 +58,13 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         hideProgress();
         showError(message);
     }
+    @OnClick(R.id.btnSigIn)
     @Override public void loginNormal() {
-        if(Validation.isOnline()){
             String email = edtEmail.getText().toString();
             String password = edtPassword.getText().toString();
             showProgress();
             loginUserPresenter.login(email,password);
-        }else
-            Validation.showNoConnectionDialog(this);
+
     }
     @Override public void showProgress() {
         progressDialog.setMessage(getString(R.string.login_loading));
@@ -62,5 +75,10 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     }
     @Override public void showError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+    }
+    @OnClick(R.id.btnSignUp)
+    public void SingUp(){
+        Intent i = new Intent(this,RegisterActivity.class);
+        startActivity(i);
     }
 }
