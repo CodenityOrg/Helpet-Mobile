@@ -40,16 +40,14 @@ public class RegisterUserInteractorImpl extends AbstractInteractor implements Re
     @Override
     public void run() {
         User user  = new User();
-        user.setName(mName);
-        user.setLastname(mLastName);
+        user.setFirstName(mName);
+        user.setLastName(mLastName);
         user.setEmail(mEmail);
         user.setPhone(mPhone);
         user.setPassword(mPassword);
         Response result = mUserRepository.register(user);
         if(result!=null){
             if(result.isSuccessful()   ){
-                user = (User)result.body();
-                UserSharedPreferences.saveUser(user);
                 loginSuccess();
             }else{
                 String message = getMessage(result.code());

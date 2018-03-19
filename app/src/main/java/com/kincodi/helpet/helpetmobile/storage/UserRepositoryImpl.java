@@ -31,6 +31,7 @@ public class UserRepositoryImpl implements UserRepository{
     public Response register(User user) {
         try{
             Call call = API.register(user);
+            Log.d("Register", String.valueOf(user));
             Response<User> result = call.execute();
             return result;
         }catch (IOException e){

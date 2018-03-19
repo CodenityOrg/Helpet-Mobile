@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,17 +32,22 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         userRepository = new UserRepositoryImpl();
         initPresenters();
+        ButterKnife.bind(this);
     }
     public void initPresenters(){
-        loginUserPresenter = new LoginUserPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), this, userRepository);
+        loginUserPresenter = new LoginUserPresenterImpl(
+                ThreadExecutor.getInstance(),
+                MainThreadImpl.getInstance(),
+                this, userRepository);
     }
     @Override public void onLogged() {
+        Log.d("sdfasdfsafsd","sdfsdfasdfsd");
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();

@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterUserP
     }
     @Override
     public void showProgress() {
-        progressDialog.setMessage(getString(R.string.login_loading));
+        progressDialog.setMessage(getString(R.string.register_loading));
         progressDialog.show();
     }
 
@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterUserP
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();
-        Intent i = new Intent(this,MapActivity.class);
+        Intent i = new Intent(this,LoginActivity.class);
         startActivity(i);
     }
 

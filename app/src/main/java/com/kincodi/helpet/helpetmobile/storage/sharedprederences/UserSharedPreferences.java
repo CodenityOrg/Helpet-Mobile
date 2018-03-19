@@ -16,8 +16,8 @@ public class UserSharedPreferences {
     protected static SharedPreferences.Editor localEditor = prefs.edit();
 
     static public void saveUser(User user){
-        localEditor.putString("name",user.getName());
-        localEditor.putString("lastname",user.getLastname());
+        localEditor.putString("name",user.getFirstName());
+        localEditor.putString("lastname",user.getLastName());
         localEditor.putString("email",user.getEmail());
         localEditor.putString("password",user.getPassword());
         localEditor.putString("phone",user.getPhone());

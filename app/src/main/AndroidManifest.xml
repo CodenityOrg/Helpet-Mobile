@@ -26,21 +26,27 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.ui.activities.MapActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".presentation.ui.activities.LoginActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".presentation.ui.activities.RegisterActivity" />
-        <activity
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".presentation.ui.activities.RegisterActivity" >
+        </activity>
+        <activity
+            android:theme="@style/AppTheme"
             tools:replace="android:name"
             android:name=".presentation.ui.activities.PostActivity"></activity>
     </application>

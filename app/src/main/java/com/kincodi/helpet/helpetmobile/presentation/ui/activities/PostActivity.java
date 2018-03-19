@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.kincodi.helpet.helpetmobile.R;
+import com.kincodi.helpet.helpetmobile.domain.model.Pet;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PostAdapter;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class PostActivity extends AppCompatActivity {
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
-    List items = new ArrayList();
+    final List items = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,9 @@ public class PostActivity extends AppCompatActivity {
 
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);
+        items.add(new Pet("AAAAAAAAAAA","DESCRIPTION","PERRITO PERDIDO","ciudad nueva"));
 
-        //adapter = new PostAdapter(items);
+        adapter = new PostAdapter(items);
         recycler.setAdapter(adapter);
     }
 }

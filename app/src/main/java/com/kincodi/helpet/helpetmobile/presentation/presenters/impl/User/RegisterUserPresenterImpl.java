@@ -44,5 +44,6 @@ public class RegisterUserPresenterImpl extends AbstractPresenter implements Regi
                         mMainThread,
                         this,
                         mUserRepository,name,lastname,phone,email,password);
+    registerUserInteractor.execute();
     }
 }

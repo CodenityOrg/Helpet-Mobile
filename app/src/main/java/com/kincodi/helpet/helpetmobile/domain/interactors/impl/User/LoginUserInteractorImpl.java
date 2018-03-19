@@ -26,7 +26,7 @@ public class LoginUserInteractorImpl extends AbstractInteractor
     private String mEmail;
     private String mPassword;
     private MainThread mMainThread;
-    private LoginUserInteractor.Callback mCallback;
+        private LoginUserInteractor.Callback mCallback;
 
     public LoginUserInteractorImpl(Executor threadExecutor,
                                    MainThread mainThread,
@@ -48,10 +48,16 @@ public class LoginUserInteractorImpl extends AbstractInteractor
         Log.d("mEmail",mEmail);
 
         Response result = mUserRepository.login(user);
+
         if(result!=null){
-            if(result.isSuccessful()   ){
+            Log.d("tetetetete",result.toString());
+            Log.d("tetetetete", String.valueOf(result.isSuccessful()));
+
+            if(result.isSuccessful()){
+                Log.d("tetetetete",result.toString());
+
                 user = (User)result.body();
-                UserSharedPreferences.saveUser(user);
+                //UserSharedPreferences.saveUser(user);
                 loginSuccess();
             }else{
                 String message = getMessage(result.code());

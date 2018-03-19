@@ -7,19 +7,19 @@ package com.kincodi.helpet.helpetmobile.domain.model;
 
 public class Pet {
 
-    private int urls;
+    private String urls;
     private String description;
     private String details;
     private String address;
 
-    public Pet(int urls, String description, String details, String address) {
+    public Pet(String urls, String description, String details, String address) {
         this.urls = urls;
         this.description = description;
         this.details = details;
         this.address = address;
     }
 
-    public void setUrls(int urls) {
+    public void setUrls(String urls) {
         this.urls = urls;
     }
 
@@ -35,7 +35,7 @@ public class Pet {
         this.address = address;
     }
 
-    public int getUrls() {
+    public String getUrls() {
         return urls;
     }
 

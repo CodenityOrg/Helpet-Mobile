@@ -23,7 +23,7 @@ public class RestClient {
     /**
      * This is our main backend/server URL.
      */
-    public static final String REST_API_URL = "https://helpet-webapp.herokuapp.com";
+    public static final String REST_API_URL = "http://192.168.0.12:3000/";
 
     private static Retrofit s_retrofit;
 
