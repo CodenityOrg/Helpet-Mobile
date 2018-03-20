@@ -34,7 +34,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private TextView details;
         public PostViewHolder(View v) {
             super(v);
-            urls = (TextView) v.findViewById(R.id.imgPets);
+            urls = (TextView) v.findViewById(R.id.txtName);
             description = (TextView) v.findViewById(R.id.txtDescription);
             address = (TextView) v.findViewById(R.id.txtAddress);
             details = (TextView) v.findViewById(R.id.txtDetails);
