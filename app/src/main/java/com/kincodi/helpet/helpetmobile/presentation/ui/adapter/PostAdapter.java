@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kincodi.helpet.helpetmobile.R;
-import com.kincodi.helpet.helpetmobile.domain.model.Pet;
+import com.kincodi.helpet.helpetmobile.domain.model.Post;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         this.items = items;
         items = new ArrayList<>(items);
     }
-    private List<Pet> items;
+    private List<Post> items;
     @Override
     public PostAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pet, parent, false);
@@ -28,22 +28,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return items.size();
     }
     public class PostViewHolder extends RecyclerView.ViewHolder {
-        private TextView urls;
+        private TextView images;
         private TextView description;
-        private TextView address;
-        private TextView details;
+        private TextView location;
+        private TextView race;
         public PostViewHolder(View v) {
             super(v);
-            urls = (TextView) v.findViewById(R.id.txtName);
+            images = (TextView) v.findViewById(R.id.txtName);
             description = (TextView) v.findViewById(R.id.txtDescription);
-            address = (TextView) v.findViewById(R.id.txtAddress);
-            details = (TextView) v.findViewById(R.id.txtDetails);
+            location = (TextView) v.findViewById(R.id.txtAddress);
+            race = (TextView) v.findViewById(R.id.txtDetails);
         }
-        public void bind(final Pet pet){
-            urls.setText(pet.getUrls());
-            description.setText(pet.getDescription());
-            address.setText(pet.getAddress());
-            details.setText(pet.getDetails());
+        public void bind(final Post post){
+            images.setText(post.getImages());
+            description.setText(post.getDescription());
+            location.setText(post.getLocation());
+            race.setText(post.getRace());
         }
     }
 

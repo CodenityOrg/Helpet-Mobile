@@ -4,19 +4,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.widget.EditText;
 
 import com.kincodi.helpet.helpetmobile.R;
-import com.kincodi.helpet.helpetmobile.domain.model.Pet;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
-import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PostAdapter;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PostActivity extends AppCompatActivity {
 
