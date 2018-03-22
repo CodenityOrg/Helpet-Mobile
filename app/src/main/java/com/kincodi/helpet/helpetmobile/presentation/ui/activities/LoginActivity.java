@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         userRepository = new UserRepositoryImpl();
@@ -47,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
                 this, userRepository);
     }
     @Override public void onLogged() {
-        Log.d("sdfasdfsafsd","sdfsdfasdfsd");
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();

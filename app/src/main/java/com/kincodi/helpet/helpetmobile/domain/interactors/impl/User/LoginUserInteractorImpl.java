@@ -8,10 +8,6 @@ import com.kincodi.helpet.helpetmobile.domain.interactors.LoginUserInteractor;
 import com.kincodi.helpet.helpetmobile.domain.interactors.base.AbstractInteractor;
 import com.kincodi.helpet.helpetmobile.domain.model.User;
 import com.kincodi.helpet.helpetmobile.domain.repository.UserRepository;
-import com.kincodi.helpet.helpetmobile.presentation.ui.activities.LoginActivity;
-import com.kincodi.helpet.helpetmobile.storage.sharedprederences.ConfigSharedPreferences;
-import com.kincodi.helpet.helpetmobile.storage.sharedprederences.UserSharedPreferences;
-
 import retrofit2.Response;
 
 
@@ -21,13 +17,11 @@ import retrofit2.Response;
 
 public class LoginUserInteractorImpl extends AbstractInteractor
         implements LoginUserInteractor {
-
     private UserRepository mUserRepository;
     private String mEmail;
     private String mPassword;
     private MainThread mMainThread;
-        private LoginUserInteractor.Callback mCallback;
-
+    private LoginUserInteractor.Callback mCallback;
     public LoginUserInteractorImpl(Executor threadExecutor,
                                    MainThread mainThread,
                                    Callback callback,
@@ -44,18 +38,9 @@ public class LoginUserInteractorImpl extends AbstractInteractor
         User user = new User();
         user.setEmail(mEmail);
         user.setPassword(mPassword);
-
-        Log.d("mEmail",mEmail);
-
         Response result = mUserRepository.login(user);
-
         if(result!=null){
-            Log.d("tetetetete",result.toString());
-            Log.d("tetetetete", String.valueOf(result.isSuccessful()));
-
             if(result.isSuccessful()){
-                Log.d("tetetetete",result.toString());
-
                 user = (User)result.body();
                 //UserSharedPreferences.saveUser(user);
                 loginSuccess();
