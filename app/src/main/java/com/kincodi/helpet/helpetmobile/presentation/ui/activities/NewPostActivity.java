@@ -3,23 +3,36 @@ package com.kincodi.helpet.helpetmobile.presentation.ui.activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.executor.impl.ThreadExecutor;
 import com.kincodi.helpet.helpetmobile.domain.repository.PostRepository;
-import com.kincodi.helpet.helpetmobile.domain.repository.UserRepository;
+import com.kincodi.helpet.helpetmobile.helpers.FileUtils;
+import com.kincodi.helpet.helpetmobile.helpers.Validation;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.NewPostPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.NewPostPresenterImpl;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.ImageAdapter;
@@ -27,7 +40,10 @@ import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.KindDialogFragmen
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
 import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,36 +61,77 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
     private NewPostPresenterImpl newPostPresenter;
     private PostRepository postRepository;
     ProgressDialog progressDialog;
-    @BindView(R.id.edtName) EditText edtName;
 
-    private int MAX_ATTACHMENT_COUNT = 10;
+    @BindView(R.id.edtName) EditText edtName;
+    @BindView(R.id.edtDescription) EditText edtDescription;
+    @BindView(R.id.edtLocation) EditText edtLocation;
+    @BindView(R.id.edtPersonContact) EditText edtPersonContact;
+    @BindView(R.id.edtPhone) EditText edtPhone;
+
+    @BindView(R.id.spKind) Spinner spKind;
+    @BindView(R.id.spSpecies) Spinner spSpecies;
+    @BindView(R.id.spRace) Spinner spRace;
+
     private ArrayList<String> photoPaths = new ArrayList<>();
     private ArrayList<String> docPaths = new ArrayList<>();
+    ArrayList<File> files = new ArrayList<>();
     private static final int PICK_FROM_GALLERY = 1;
-
+    private int MAX_ATTACHMENT_COUNT = 10;
+    File file;
+    String mKind,mSpecies,mRace;
+    final int MY_PERMISSIONS_STORAGE = 1003;
+    private int READ_REQUEST_CODE = 1;
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         postRepository = new PostRepositoryImpl();
-
         initPresenters();
         ButterKnife.bind(this);
+        String[] kinds = {"Encontrada","Perdida"};
+        String[] species = {"Gato","Perro"};
+        String[] races = {"Snauzer","Pastor Aleman"};
+        spKind.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, kinds));
+        spSpecies.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, species));
+        spRace.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, races));
+        mKind = spKind.getSelectedItem().toString();
+        mSpecies = spSpecies.getSelectedItem().toString();
+        mRace = spRace.getSelectedItem().toString();
     }
-    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case FilePickerConst.REQUEST_CODE_PHOTO:
-                if (resultCode == Activity.RESULT_OK && data != null) {
+            case PICK_FROM_GALLERY:
+                if (resultCode == Activity.RESULT_OK) {
                     photoPaths = new ArrayList<>();
                     photoPaths.addAll(data.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA));
+
+                    if (data != null) {
+                        ClipData clipData = data.getClipData();
+
+                        if (clipData != null) {
+
+                            /*for (int i = 0; i < clipData.getItemCount(); i++) {
+                                ClipData.Item item = clipData.getItemAt(i);
+                                Uri uri = item.getUri();
+                                //Log.d("TAG PATH", String.valueOf(uri));
+                                String file_ = FileUtils.getPath(this, uri);
+                                //file = new File(file_);
+                                //Log.d("TAG PATH", String.valueOf(file));
+
+                                //files.add(file);
+                            }*/
+                        }
+                    }
                 }
                 break;
         }
         addThemToView(photoPaths);
     }
-    private void addThemToView(ArrayList<String> imagePaths) {
+
+    public void addThemToView(ArrayList<String> imagePaths) {
         ArrayList<String> filePaths = new ArrayList<>();
         if (imagePaths != null) filePaths.addAll(imagePaths);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -95,13 +152,77 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
             if (ActivityCompat.checkSelfPermission(NewPostActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(NewPostActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
             } else {
-                onPickPhoto();
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                startActivityForResult(Intent.createChooser(intent, "select multiple images"), 1);
+                //onPickPhoto();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void onPickPhoto() {
+
+    //@OnClick(R.id.snpKind)
+    public void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        KindDialogFragment kindDialogFragment = KindDialogFragment.newInstance("Some Title");
+        kindDialogFragment.show(fm, "fragment_edit_name");
+    }
+    @Override public void showProgress() {
+        progressDialog.setMessage(getString(R.string.login_loading));
+        progressDialog.show();
+    }
+    @Override public void hideProgress() {
+        progressDialog.hide();
+    }
+    @Override public void showError(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+    }
+    @Override public void onCreated() {
+        hideProgress();
+        setResult(Activity.RESULT_OK);
+        finish();
+        Intent i = new Intent(this,PostActivity.class);
+        startActivity(i);
+    }
+    @Override public void onFailed(String message) {
+        hideProgress();
+        showError(message);
+    }
+    @OnClick(R.id.btnPublisher)
+    @Override public void createNormal() {
+
+        if(Validation.isOnline()){
+
+            Date  date = new Date();
+            String name = edtName.getText().toString();
+            mKind = spKind.getSelectedItem().toString();
+            mSpecies = spSpecies.getSelectedItem().toString();
+            mRace = spRace.getSelectedItem().toString();
+            String description = edtDescription.getText().toString();
+            Object position="";
+            String person_contact = edtPersonContact.getText().toString();
+            String phone = edtPhone.getText().toString();
+
+
+            showProgress();
+            newPostPresenter.createPost(name,description,mRace,person_contact,mKind,date,position,phone,photoPaths);
+        }else
+            Validation.showNoConnectionDialog(this);
+
+    }
+
+    public void initPresenters(){
+        newPostPresenter = new NewPostPresenterImpl(ThreadExecutor.getInstance(),
+                MainThreadImpl.getInstance(),this,postRepository);
+    }
+
+    //int REQUEST_DELETE_PHOTO = 2;
+
+    /*public void onPickPhoto() {
         int maxCount = MAX_ATTACHMENT_COUNT - docPaths.size();
         if ((docPaths.size() + photoPaths.size()) == MAX_ATTACHMENT_COUNT) {
             Toast.makeText(this, "Cannot select more than " + MAX_ATTACHMENT_COUNT + " items",
@@ -122,51 +243,5 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
                     .withOrientation(Orientation.UNSPECIFIED)
                     .pickPhoto(this);
         }
-    }
-    //@OnClick(R.id.snpKind)
-    public void showEditDialog() {
-        FragmentManager fm = getSupportFragmentManager();
-        KindDialogFragment kindDialogFragment = KindDialogFragment.newInstance("Some Title");
-        kindDialogFragment.show(fm, "fragment_edit_name");
-    }
-
-    @Override
-    public void showProgress() {
-        progressDialog.setMessage(getString(R.string.login_loading));
-        progressDialog.show();
-    }
-
-    @Override
-    public void hideProgress() {
-        progressDialog.hide();
-    }
-
-    @Override
-    public void showError(String message) {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onCreated() {
-        hideProgress();
-        setResult(Activity.RESULT_OK);
-        finish();
-        Intent i = new Intent(this,PostActivity.class);
-        startActivity(i);
-    }
-
-    @Override
-    public void onFailed(String message) {
-        hideProgress();
-        showError(message);
-    }
-
-    @Override
-    public void createNormal() {
-
-    }
-    public void initPresenters(){
-        newPostPresenter = new NewPostPresenterImpl(ThreadExecutor.getInstance(),
-                MainThreadImpl.getInstance(),this,postRepository);
-    }
+    }*/
 }

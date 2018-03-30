@@ -16,6 +16,7 @@ import com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivit
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PostAdapter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -48,12 +49,18 @@ public class ListPetsFragment extends Fragment {
         recycler = (RecyclerView) view.findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
 
+        Date date = new Date();
         lManager = new LinearLayoutManager(getActivity());
         recycler.setLayoutManager(lManager);
-        items.add(new Post("AAAAAAAAAAA","DESCRIPTION","PERRITO PERDIDO","ciudad nueva"));
-        items.add(new Post("AAAAAAAAAAA","DESCRIPTION","PERRITO PERDIDO","ciudad nueva"));
-        items.add(new Post("AAAAAAAAAAA","DESCRIPTION","PERRITO PERDIDO","ciudad nueva"));
-        items.add(new Post("AAAAAAAAAAA","DESCRIPTION","PERRITO PERDIDO","ciudad nueva"));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
+        items.add(new Post("AAAAAAAAAAA","AAAAA","AAAA","AAAAA","AAAA","AAA","aaAA",date));
 
         adapter = new PostAdapter(items);
         recycler.setAdapter(adapter);

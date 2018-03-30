@@ -46,8 +46,8 @@ public class RestClient {
                             @Override
                             public Response intercept(Interceptor.Chain chain) throws IOException {
                                 Request request = chain.request().newBuilder()
-                                        //.addHeader("api-token", ConfigSharedPreferences.restoreRembToken())
-                                        //.addHeader("user-id", UserSharedPreferences.restoreUser().getId() + "")
+                                        .addHeader("api-token", ConfigSharedPreferences.restoreRembToken())
+                                        .addHeader("user-id", UserSharedPreferences.restoreUser().getId() + "")
                                         .build();
                                 //Response originalResponse = chain.proceed(request);
 

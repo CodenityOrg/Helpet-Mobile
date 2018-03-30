@@ -2,6 +2,10 @@ package com.kincodi.helpet.helpetmobile.presentation.presenters;
 
 import com.kincodi.helpet.helpetmobile.presentation.ui.BaseView;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+
 /**
  * Created by Julio on 19/03/2018.
  */
@@ -12,9 +16,13 @@ public interface NewPostPresenter {
         void onFailed(String message);
         void createNormal();
     }
-    void createPost(String name,String kind,
-            String species, String race,
-            String description,String location,
-            String person_contact,String phone,
-            String images);
+    void createPost(String name,
+                    String description,
+                    String race,
+                    String age,
+                    String kind,
+                    Date date,
+                    Object position,
+                    String phone,
+                    ArrayList<String> file);
 }

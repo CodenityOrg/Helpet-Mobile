@@ -28,21 +28,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return items.size();
     }
     public class PostViewHolder extends RecyclerView.ViewHolder {
-        private TextView images;
+        private TextView name;
         private TextView description;
         private TextView location;
         private TextView race;
         public PostViewHolder(View v) {
             super(v);
-            images = (TextView) v.findViewById(R.id.txtName);
+            name = (TextView) v.findViewById(R.id.txtName);
             description = (TextView) v.findViewById(R.id.txtDescription);
             location = (TextView) v.findViewById(R.id.txtAddress);
             race = (TextView) v.findViewById(R.id.txtDetails);
         }
         public void bind(final Post post){
-            images.setText(post.getImages());
+            name.setText(post.getName());
             description.setText(post.getDescription());
-            location.setText(post.getLocation());
             race.setText(post.getRace());
         }
     }

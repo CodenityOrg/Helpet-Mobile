@@ -10,12 +10,32 @@ import com.kincodi.helpet.helpetmobile.App;
  */
 
 public class ConfigSharedPreferences {
-    protected static SharedPreferences prefes = App.getInstance().getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
-    protected static SharedPreferences.Editor localEditor = prefes.edit();
+    protected static SharedPreferences prefs = App.getInstance().getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
+    protected static SharedPreferences.Editor localEditor = prefs.edit();
 
     static public void saveConfig(String remToken, String confToken){
         localEditor.putString("remToken",remToken);
         localEditor.putString("confToken",confToken);
         localEditor.commit();
     }
+
+
+    static public void saveRembToken(String rembToken){
+        localEditor.putString("rembToken",rembToken);
+        localEditor.commit();
+    }
+
+    static public void saveConfToken(String confToken){
+        localEditor.putString("confToken",confToken);
+        localEditor.commit();
+    }
+
+    static public String restoreConfToken(){
+        return prefs.getString("confToken","");
+    }
+
+    static public String restoreRembToken(){
+        return prefs.getString("rembToken","");
+    }
+
 }

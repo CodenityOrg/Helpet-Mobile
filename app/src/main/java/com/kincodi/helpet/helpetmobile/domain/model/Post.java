@@ -1,6 +1,8 @@
 package com.kincodi.helpet.helpetmobile.domain.model;
 
 
+import java.util.Date;
+
 /**
  * Created by Julio on 20/02/2018.
  */
@@ -8,28 +10,26 @@ package com.kincodi.helpet.helpetmobile.domain.model;
 public class Post {
 
     private String name;
-    private String kind;
-    private String species;
-    private String race;
     private String description;
-    private String location;
-    private String person_contact;
+    private String race;
+    private String kind;
+    private String age;
+    private Object position;
     private String phone;
-    private String images;
+    private Date date;
 
-    public Post() {
+    public Post(String name, String description, String race, String kind, String age, Object position, String phone, Date date) {
+        this.name = name;
+        this.description = description;
+        this.race = race;
+        this.kind = kind;
+        this.age = age;
+        this.position = position;
+        this.phone = phone;
+        this.date = date;
     }
 
-    public Post(String name, String kind, String species, String race, String description, String location, String person_contact, String phone, String images) {
-        this.name = name;
-        this.kind = kind;
-        this.species = species;
-        this.race = race;
-        this.description = description;
-        this.location = location;
-        this.person_contact = person_contact;
-        this.phone = phone;
-        this.images = images;
+    public Post() {
     }
 
     public String getName() {
@@ -40,20 +40,12 @@ public class Post {
         this.name = name;
     }
 
-    public String getKind() {
-        return kind;
+    public String getDescription() {
+        return description;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getRace() {
@@ -64,28 +56,28 @@ public class Post {
         this.race = race;
     }
 
-    public String getDescription() {
-        return description;
+    public String getKind() {
+        return kind;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAge() {
+        return age;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAge(String age) {
+        this.age = age;
     }
 
-    public String getPerson_contact() {
-        return person_contact;
+    public Object getPosition() {
+        return position;
     }
 
-    public void setPerson_contact(String person_contact) {
-        this.person_contact = person_contact;
+    public void setPosition(Object position) {
+        this.position = position;
     }
 
     public String getPhone() {
@@ -96,11 +88,11 @@ public class Post {
         this.phone = phone;
     }
 
-    public String getImages() {
-        return images;
+    public Date getDate() {
+        return date;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

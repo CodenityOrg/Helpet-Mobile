@@ -1,7 +1,9 @@
 package com.kincodi.helpet.helpetmobile.domain.repository;
 
 import com.kincodi.helpet.helpetmobile.domain.model.Post;
-import com.kincodi.helpet.helpetmobile.domain.model.User;
+
+import java.io.File;
+import java.util.ArrayList;
 
 import retrofit2.Response;
 
@@ -11,5 +13,5 @@ import retrofit2.Response;
 
 public interface PostRepository {
 
-    Response create (Post post);
+    Response create (ArrayList<String> file, Post post);
 }
