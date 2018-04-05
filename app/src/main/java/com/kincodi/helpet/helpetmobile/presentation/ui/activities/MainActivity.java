@@ -18,15 +18,15 @@ public class MainActivity extends AppCompatActivity{
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation_view);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view);
+        viewPager = findViewById(R.id.viewpager);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_lost:
-                                viewPager.setCurrentItem(0);
+                                viewPager.setCurrentItem(1);
                                 break;
                             case R.id.action_found:
                                 viewPager.setCurrentItem(1);

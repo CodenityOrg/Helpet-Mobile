@@ -18,8 +18,10 @@ public class Post implements Serializable {
     private String age;
     private String kind;
     private Date date;
+    private String gender;
     private Double[] position;
     private String phone;
+    private int type;
     private List<Photo> photos;
 
     public List<Photo> getPhotos() {
@@ -95,6 +97,22 @@ public class Post implements Serializable {
     }
 
     public Post() {
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Post(String name, String description, String race, String age, String kind, Date date, Double[] position, String phone) {

@@ -30,7 +30,8 @@ public class GetListPostInteractorImpl extends AbstractInteractor implements Get
                                      String type) {
         super(threadExecutor, mainThread);
         mType = type;
-
+        mPostRepositoryImpl = postRepository;
+        mCallback = callback;
 
     }
     void onSuccess(final List<Post> posts){

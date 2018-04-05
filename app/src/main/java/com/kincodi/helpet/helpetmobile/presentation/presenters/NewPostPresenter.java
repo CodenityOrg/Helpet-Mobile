@@ -26,5 +26,6 @@ public interface NewPostPresenter {
                     Date date,
                     Double[] position,
                     String phone,
+                    int type,
                     ArrayList<String> file);
 }

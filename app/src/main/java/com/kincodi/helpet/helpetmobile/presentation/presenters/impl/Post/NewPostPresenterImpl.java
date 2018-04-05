@@ -42,10 +42,11 @@ public class NewPostPresenterImpl extends AbstractPresenter implements NewPostPr
             Date date,
             Double[] position,
             String phone,
+            int type,
             ArrayList<String> file) {
         NewPostInteractor newPostInteractor = new NewPostInteractorImpl(
                 mExecutor,mMainThread,this,mPostRepository,
-                name,description,race,age,kind,date,position,phone,file);
+                name,description,race,age,kind,date,position,phone,  type,file);
         newPostInteractor.execute();
     }
 }

@@ -30,7 +30,7 @@
     <string name="location">Ubicacion</string>
     <string name="contact">Persona de Contacto</string>
     <string name="number_contact">Celular de Contacto</string>
-    <string name="description">Description</string>
+    <string name="description">Descripcion</string>
     <string name="publisher">Publicar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

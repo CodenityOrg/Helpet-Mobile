@@ -6,14 +6,12 @@
     xmlns:design="http://schemas.android.com/apk/res-auto"
     app:ignore="NamespaceTypo">
 
-
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/menufond"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         design:menu="@menu/bottom_navigation_menu">

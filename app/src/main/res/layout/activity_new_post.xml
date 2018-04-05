@@ -19,6 +19,7 @@
             <EditText
                 android:id="@+id/edtName"
                 android:inputType="text"
+                android:hint="Nombre (Opcional)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
