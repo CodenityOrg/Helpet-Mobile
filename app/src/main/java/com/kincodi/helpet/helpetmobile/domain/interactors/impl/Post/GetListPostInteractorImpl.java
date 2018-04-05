@@ -21,12 +21,15 @@ public class GetListPostInteractorImpl extends AbstractInteractor implements Get
     PostRepositoryImpl mPostRepositoryImpl;
     GetListPostInteractor.Callback mCallback;
     MainThread mMainThread;
+    String mType;
 
     public GetListPostInteractorImpl(Executor threadExecutor,
                                      MainThread mainThread,
                                      PostRepositoryImpl postRepository,
-                                     GetListPostInteractor.Callback callback) {
+                                     GetListPostInteractor.Callback callback,
+                                     String type) {
         super(threadExecutor, mainThread);
+        mType = type;
 
 
     }
@@ -49,7 +52,7 @@ public class GetListPostInteractorImpl extends AbstractInteractor implements Get
     }
     @Override
     public void run() {
-        Response response = mPostRepositoryImpl.getPosts();
+        Response response = mPostRepositoryImpl.getPosts(mType);
         if (response!=null){
             if (response.isSuccessful()){
                 List<Post> posts = (List<Post>) response.body();

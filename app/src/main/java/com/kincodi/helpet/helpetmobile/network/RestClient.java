@@ -48,5 +48,4 @@ public class RestClient {
     public static <T> T getService(Class<T> serviceClass) {
         return s_retrofit.create(serviceClass);
     }
-
 }

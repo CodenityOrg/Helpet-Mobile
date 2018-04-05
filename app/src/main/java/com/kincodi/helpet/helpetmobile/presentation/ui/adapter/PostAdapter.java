@@ -17,9 +17,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         void onItemClick(Post post);
     }
     private List<Post> posts;
-    public PostAdapter(List posts,OnItemClickListener listener) {
+    public PostAdapter(List<Post> mPosts) {
         this.posts = posts;
-        posts = new ArrayList<>(posts);
+        posts = mPosts;
+    }
+
+    public void addPosts(List<Post> mPosts) {
+        posts.addAll(mPosts);
     }
 
     @Override

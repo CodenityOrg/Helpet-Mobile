@@ -156,11 +156,9 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
     }
     @OnClick(R.id.btn_show_map)
     public void showEditDialog() {
-        FragmentManager fm = getSupportFragmentManager();
-        MapDialogFragment mapDialogFragment = MapDialogFragment.newInstance();
-        mapDialogFragment.show(fm, "fragment_edit_name");
+        Intent i  = new Intent(this,PositionMapActivity.class);
+        startActivity(i);
     }
-
     @Override public void showProgress() {
         progressDialog.setMessage(getString(R.string.login_loading));
         progressDialog.show();

@@ -61,9 +61,9 @@ public class PostRepositoryImpl implements PostRepository {
         return null;
     }
     @Override
-    public Response getPosts() {
+    public Response getPosts(String type) {
         try{
-            Call call = API.getCards();
+            Call call = API.getPosts(type);
             Response<List<Post>> result =  call.execute();
             return result;
         }catch (IOException e){

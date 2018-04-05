@@ -19,37 +19,45 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kincodi.helpet.helpetmobile.R;
+import com.kincodi.helpet.helpetmobile.domain.executor.impl.ThreadExecutor;
 import com.kincodi.helpet.helpetmobile.domain.model.Post;
 import com.kincodi.helpet.helpetmobile.domain.repository.PostRepository;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.GetListPostPresenter;
+import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.GetListPostPresenterImpl;
+import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.User.RegisterUserPresenterImpl;
 import com.kincodi.helpet.helpetmobile.presentation.ui.activities.DetailActivity;
 import com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivity;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PostAdapter;
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
+import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-public class ListPetsFragment extends Fragment implements GetListPostPresenter.View{
+public class ListPetsFragment extends Fragment {
 
     private RecyclerView recycler;
-    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
     private FloatingActionButton fab;
-    final List items = new ArrayList();
-    ProgressDialog progressDialog;
-    private PostRepository postRepository;
+    private PostRepositoryImpl postRepository;
+    private GetListPostPresenterImpl presenter;
+    private List<Post> mPosts = new ArrayList<>();
+    private PostAdapter postAdapter;
 
     public ListPetsFragment() {
     }
+
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_pets, container, false);
+
 
         fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -61,53 +69,22 @@ public class ListPetsFragment extends Fragment implements GetListPostPresenter.V
             }
         });
 
-        recycler = (RecyclerView) view.findViewById(R.id.recycler);
+        recycler = view.findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
-
-
-        return view;
-
-
-    }
-
-    @Override public void showProgress() {
-        progressDialog.setMessage(getString(R.string.login_loading));
-        progressDialog.show();
-    }
-
-    @Override public void hideProgress() {
-        progressDialog.hide();
-
-    }
-
-    @Override
-    public void showError(String message) {
-        Toast.makeText(getActivity(),message,Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onSuccessGotPost(List<Post> posts) {
+        postRepository = new PostRepositoryImpl();
+        postAdapter = new PostAdapter(mPosts);
         lManager = new LinearLayoutManager(getActivity());
         recycler.setLayoutManager(lManager);
-        recycler.setAdapter(new PostAdapter(posts, new PostAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Post item) {
-                Post post = new Post(item.getName(),item.getDescription(),item.getRace(),item.getKind(),
-                        item.getAge(),
-                        item.getDate(),
-                        item.getPosition(),
-                        item.getPhone());
-                Toast.makeText(getActivity(), "Item Clicked", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(getActivity(),DetailActivity.class);
-                i.putExtra("post", post);
-                startActivity(i);
-            }
-        }));
+        recycler.setAdapter(postAdapter);
+
+        return view;
     }
 
-    @Override
-    public void onFailedGotPost(String message) {
-        hideProgress();
-        showError(message);
+
+    public void addPosts(List<Post> posts) {
+        postAdapter.addPosts(posts);
+        postAdapter.notifyDataSetChanged();
     }
+
+
 }
