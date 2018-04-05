@@ -41,7 +41,7 @@
                     android:layout_height="20dp" />
                 <TextView
                     android:text="DEDEDEDEDEDEDEDEDEDEDE"
-                    android:id="@+id/txtDescription"
+                    android:id="@+id/txtRace"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
@@ -56,7 +56,7 @@
                     android:layout_height="20dp" />
                 <TextView
                     android:text="DEDEDEDEDEDEDEDEDEDEDE"
-                    android:id="@+id/txtAddress"
+                    android:id="@+id/txtKind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -72,7 +72,7 @@
 
                 <TextView
                     android:text="DEDEDEDEDEDEDEDEDEDEDE"
-                    android:id="@+id/txtDetails"
+                    android:id="@+id/txtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
