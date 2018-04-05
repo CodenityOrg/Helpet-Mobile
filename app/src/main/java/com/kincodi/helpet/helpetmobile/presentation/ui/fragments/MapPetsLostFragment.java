@@ -24,6 +24,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -120,7 +122,6 @@ public class MapPetsLostFragment extends Fragment implements
                 ActivityCompat.requestPermissions(getActivity(),
                         new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-
                 ActivityCompat.requestPermissions(getActivity(),
                         new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                         PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
@@ -134,8 +135,7 @@ public class MapPetsLostFragment extends Fragment implements
             mMarkerLastLocation.setTag(0);
         }
         int permissionCheck = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (permissionCheck!= PackageManager.PERMISSION_DENIED)
-        {
+        if (permissionCheck!= PackageManager.PERMISSION_DENIED) {
             mLocationPermissionGranted = false;
             LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
         }
@@ -192,7 +192,18 @@ public class MapPetsLostFragment extends Fragment implements
 
     @Override
     public void onSuccessGotPost(List<Post> posts) {
-
+        for (int i = 0; posts.size() > i ;i++) {
+            Double a = posts.get(i).getPostLocation().getCoordinates()[0];
+            Double b = posts.get(i).getPostLocation().getCoordinates()[1];
+            BitmapDescriptor defaultMarker = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+            LatLng latlng = new LatLng(a, b);
+            Marker mapMarker = googleMap.addMarker(new MarkerOptions()
+                    .position(latlng)
+                    .title(posts.get(i).getName())
+                    .snippet(posts.get(i).getDescription())
+                    .icon(defaultMarker));
+            mapMarker.setTag(0);
+        }
     }
 
     @Override

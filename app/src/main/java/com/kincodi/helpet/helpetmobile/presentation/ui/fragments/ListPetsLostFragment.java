@@ -54,7 +54,10 @@ public class ListPetsLostFragment extends Fragment implements GetListPostPresent
 
     @Override
     public void onSuccessGotPost(List<Post> posts) {
-        postAdapter.addPosts(posts);
+
+
+
+            postAdapter.addPosts(posts);
         postAdapter.notifyDataSetChanged();
     }
 

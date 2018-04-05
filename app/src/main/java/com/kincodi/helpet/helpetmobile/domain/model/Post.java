@@ -25,6 +25,7 @@ public class Post implements Parcelable {
     private Double[] position;
     private String phone;
     private int type;
+    private PostLocation postLocation;
     private List<Photo> photos;
 
     public List<Photo> getPhotos() {
@@ -142,6 +143,14 @@ public class Post implements Parcelable {
         age = in.readString();
         kind = in.readString();
         gender = in.readString();
+    }
+
+    public PostLocation getPostLocation() {
+        return postLocation;
+    }
+
+    public void setPostLocation(PostLocation postLocation) {
+        this.postLocation = postLocation;
     }
 
     @Override

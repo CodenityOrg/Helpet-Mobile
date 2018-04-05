@@ -58,6 +58,7 @@ public class InfoFragment extends Fragment {
         View view  = inflater.inflate(R.layout.fragment_info, container, false);
 
         mDemoSlider = view.findViewById(R.id.slider);
+
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());

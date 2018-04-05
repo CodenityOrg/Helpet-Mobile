@@ -44,8 +44,7 @@ public class MapPetsFoundFragment extends Fragment implements
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 2;
     private Marker mMarkerLastLocation;
-    public MapPetsFoundFragment() {
-    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
