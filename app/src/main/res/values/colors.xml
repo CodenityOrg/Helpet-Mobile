@@ -55,4 +55,6 @@
     <color name="tab_checked">#3F51B5</color>
     <color name="tab_unchecked">#FFFFFF</color>
     <color name="white_trans">#99FFFFFF</color>
+
+    <color name="transparent">#80000000</color>
 </resources>
