@@ -8,6 +8,9 @@ import com.kincodi.helpet.helpetmobile.domain.interactors.LoginUserInteractor;
 import com.kincodi.helpet.helpetmobile.domain.interactors.base.AbstractInteractor;
 import com.kincodi.helpet.helpetmobile.domain.model.User;
 import com.kincodi.helpet.helpetmobile.domain.repository.UserRepository;
+import com.kincodi.helpet.helpetmobile.storage.sharedprederences.ConfigSharedPreferences;
+import com.kincodi.helpet.helpetmobile.storage.sharedprederences.UserSharedPreferences;
+
 import retrofit2.Response;
 
 
@@ -42,7 +45,9 @@ public class LoginUserInteractorImpl extends AbstractInteractor
         if(result!=null){
             if(result.isSuccessful()){
                 user = (User)result.body();
-                //UserSharedPreferences.saveUser(user);
+                UserSharedPreferences.saveUser(user);
+                ConfigSharedPreferences.saveConfig(user.getToken());
+
                 loginSuccess();
             }else{
                 String message = getMessage(result.code());

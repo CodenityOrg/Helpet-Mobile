@@ -9,6 +9,7 @@ import com.kincodi.helpet.helpetmobile.network.User.APIUserRest;
 
 import java.io.IOException;
 
+import okhttp3.ResponseBody;
 import retrofit2.Response;
 import retrofit2.Call;
 
@@ -25,6 +26,19 @@ public class UserRepositoryImpl implements UserRepository{
     public UserRepositoryImpl( ) {
         mRestClient  = new RestClient();
         API=mRestClient.getService(APIUserRest.class);
+    }
+
+    @Override
+    public Response updateFireBaseId(String fireBaseId, String oldFireBaseId) {
+        try{
+            Call call = API.updateFireBaseId(fireBaseId,oldFireBaseId);
+            Response<ResponseBody> result =  call.execute();
+            return result;
+        }catch (IOException e){
+            Log.e("Error Exception",e.toString());
+        }
+
+        return null;
     }
 
     @Override

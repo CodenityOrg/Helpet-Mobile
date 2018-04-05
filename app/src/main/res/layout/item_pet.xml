@@ -44,8 +44,13 @@
                     android:layout_height="20dp"
                     />
                 <TextView
+<<<<<<< HEAD
                     android:text="Macho"
                     android:id="@+id/txtDescription"
+=======
+                    android:text="DEDEDEDEDEDEDEDEDEDEDE"
+                    android:id="@+id/txtRace"
+>>>>>>> 4d8ebb2a2baab4084d4852826e9eafae5601612a
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="12dp"/>
@@ -60,8 +65,13 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
                 <TextView
+<<<<<<< HEAD
                     android:text="Felino"
                     android:id="@+id/txtAddress"
+=======
+                    android:text="DEDEDEDEDEDEDEDEDEDEDE"
+                    android:id="@+id/txtKind"
+>>>>>>> 4d8ebb2a2baab4084d4852826e9eafae5601612a
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="12dp"/>
@@ -77,8 +87,13 @@
                     android:layout_height="20dp" />
 
                 <TextView
+<<<<<<< HEAD
                     android:text="Es un pequeño con una leccion en la pata"
                     android:id="@+id/txtDetails"
+=======
+                    android:text="DEDEDEDEDEDEDEDEDEDEDE"
+                    android:id="@+id/txtDescription"
+>>>>>>> 4d8ebb2a2baab4084d4852826e9eafae5601612a
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="12dp"/>

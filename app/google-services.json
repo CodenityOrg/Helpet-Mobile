@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "181338690460",
+    "firebase_url": "https://helpet-41101.firebaseio.com",
+    "project_id": "helpet-41101",
+    "storage_bucket": "helpet-41101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181338690460:android:81c6be6da1b73de8",
+        "android_client_info": {
+          "package_name": "com.kincodi.helpet.helpetmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181338690460-7ot8g4avkiu5ri0ntl5vfgcr1hsmuebu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kincodi.helpet.helpetmobile",
+            "certificate_hash": "0d80e9b4ac9d11f852135930da3727e37531790e"
+          }
+        },
+        {
+          "client_id": "181338690460-b1k0iud65o0os6fd0btf9jh5aq0bvdt0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwNc6OKlXCIxqd7Oo3sJyK3t8Hp9oS7d4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181338690460-b1k0iud65o0os6fd0btf9jh5aq0bvdt0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

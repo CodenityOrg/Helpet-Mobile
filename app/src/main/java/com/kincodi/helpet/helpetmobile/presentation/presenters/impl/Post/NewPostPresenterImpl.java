@@ -8,6 +8,9 @@ import com.kincodi.helpet.helpetmobile.domain.repository.PostRepository;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.NewPostPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.base.AbstractPresenter;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by Julio on 19/03/2018.
  */
@@ -28,12 +31,21 @@ public class NewPostPresenterImpl extends AbstractPresenter implements NewPostPr
     @Override public void onCreateFailed(String message) {
         mView.onFailed(message);
     }
-    @Override public void createPost(String name, String kind,String species,
-                                     String race, String description,String location,
-                                     String person_contact,String phone, String images) {
+
+
+    @Override public void createPost(
+            String name,
+            String description,
+            String race,
+            String age,
+            String kind,
+            Date date,
+            Double[] position,
+            String phone,
+            ArrayList<String> file) {
         NewPostInteractor newPostInteractor = new NewPostInteractorImpl(
                 mExecutor,mMainThread,this,mPostRepository,
-                name,kind,species,race,description,location,person_contact,phone,images);
+                name,description,race,age,kind,date,position,phone,file);
         newPostInteractor.execute();
     }
 }
