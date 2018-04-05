@@ -5,14 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.executor.impl.ThreadExecutor;
 import com.kincodi.helpet.helpetmobile.domain.repository.UserRepository;
-import com.kincodi.helpet.helpetmobile.helpers.Validation;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.LoginUserPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.User.LoginUserPresenterImpl;
 import com.kincodi.helpet.helpetmobile.storage.UserRepositoryImpl;
@@ -38,12 +36,14 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         initPresenters();
         ButterKnife.bind(this);
     }
+
     public void initPresenters(){
         loginUserPresenter = new LoginUserPresenterImpl(
                 ThreadExecutor.getInstance(),
                 MainThreadImpl.getInstance(),
                 this, userRepository);
     }
+
     @Override public void onLogged() {
         hideProgress();
         setResult(Activity.RESULT_OK);
@@ -73,9 +73,9 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     @Override public void showError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
     }
-    @OnClick(R.id.btnSignUp)
+    /*@OnClick(R.id.btnSignUp)
     public void SingUp(){
         Intent i = new Intent(this,RegisterActivity.class);
         startActivity(i);
-    }
+    }*/
 }
