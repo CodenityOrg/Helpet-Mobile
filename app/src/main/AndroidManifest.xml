@@ -34,11 +34,7 @@
         <activity
             android:name=".presentation.ui.activities.MainActivity"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.ui.activities.WelcomeActivity"
@@ -53,7 +49,9 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".presentation.ui.activities.LoginActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+
+        </activity>
         <activity
             android:name=".presentation.ui.activities.RegisterActivity"
             android:theme="@style/AppTheme" />
@@ -61,7 +59,12 @@
             android:name=".presentation.ui.activities.PostActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:replace="android:name" />
-        <activity android:name=".presentation.ui.activities.NewPostActivity"></activity>
+        <activity android:name=".presentation.ui.activities.NewPostActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".presentation.ui.activities.ShowPhotoActivity" />
         <activity android:name=".presentation.ui.activities.DetailActivity" />
 
@@ -81,7 +84,11 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".presentation.ui.activities.PositionMapActivity"></activity>
+        <activity android:name=".presentation.ui.activities.PositionMapActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivity" />
+        </activity>
     </application>
 
 </manifest>
