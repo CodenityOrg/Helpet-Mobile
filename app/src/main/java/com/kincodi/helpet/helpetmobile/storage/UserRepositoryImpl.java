@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public Response updateFireBaseId(String fireBaseId, String oldFireBaseId) {
         try{
-            Call call = API.updateFireBaseId(fireBaseId,oldFireBaseId);
+            Call call = API.updateFireBaseId(fireBaseId);
             Response<ResponseBody> result =  call.execute();
             return result;
         }catch (IOException e){
