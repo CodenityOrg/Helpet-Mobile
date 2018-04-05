@@ -73,9 +73,5 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     @Override public void showError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
     }
-    @OnClick(R.id.btnSignUp)
-    public void SingUp(){
-        Intent i = new Intent(this,RegisterActivity.class);
-        startActivity(i);
-    }
+
 }
