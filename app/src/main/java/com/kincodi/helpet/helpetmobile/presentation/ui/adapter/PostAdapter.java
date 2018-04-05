@@ -3,10 +3,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.model.Post;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,18 +36,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return posts.size();
     }
     public class PostViewHolder extends RecyclerView.ViewHolder {
+        private ImageView img;
         private TextView name;
         private TextView description;
         private TextView kind;
         private TextView race;
         public PostViewHolder(View v) {
             super(v);
+            img = (ImageView) v.findViewById(R.id.imgPets);
             name = (TextView) v.findViewById(R.id.txtName);
             description = (TextView) v.findViewById(R.id.txtDescription);
             kind = (TextView) v.findViewById(R.id.txtKind);
             race = (TextView) v.findViewById(R.id.txtRace);
         }
         public void bind(final Post post){
+            img.setImageResource(Picasso.get().load(post.get).into(img));
             name.setText(post.getName());
             description.setText(post.getDescription());
             race.setText(post.getRace());
@@ -53,5 +58,4 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
         /*963749339*/
     }
-
 }
