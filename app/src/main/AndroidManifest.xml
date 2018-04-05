@@ -34,10 +34,7 @@
         <activity
             android:name=".presentation.ui.activities.MainActivity"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".presentation.ui.activities.WelcomeActivity"
@@ -66,7 +63,12 @@
 
         </activity>
         <activity android:name=".presentation.ui.activities.ShowPhotoActivity" />
-        <activity android:name=".presentation.ui.activities.DetailActivity" />
+        <activity android:name=".presentation.ui.activities.DetailActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!--
         <service

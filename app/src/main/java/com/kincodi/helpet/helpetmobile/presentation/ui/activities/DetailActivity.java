@@ -36,8 +36,8 @@ public class DetailActivity extends AppCompatActivity implements GetPostInfoPres
 
         String postId = "";
 
-        getPostInfoPresenter = new GetPostInfoPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository, this);
-        getPostInfoPresenter.getInfo(postId);
+        //getPostInfoPresenter = new GetPostInfoPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository, this);
+        //getPostInfoPresenter.getInfo(postId);
     }
 
     private void setupViewPager(ViewPager viewPager) {

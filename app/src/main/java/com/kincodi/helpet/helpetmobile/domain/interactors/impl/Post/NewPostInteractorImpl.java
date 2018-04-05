@@ -75,8 +75,8 @@ public class NewPostInteractorImpl extends AbstractInteractor
         post.setDate(mDate);
         post.setAge(mAge);
         post.setType(mType);
-        
-        Response result = mPostRepository.create(mFile,post);
+
+        Response result = mPostRepository.create(mFile, post);
         if (result!=null){
             if (result.isSuccessful()){
                 createSuccess();

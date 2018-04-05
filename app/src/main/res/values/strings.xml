@@ -39,7 +39,7 @@
     <string name="title_section2">MAPA</string>
     <string name="title_seccion3">MAS</string>
     <string name="title_map">MAPA</string>
-    <string name="title_info">INFO</string>
+    <string name="title_info">DETALLE</string>
     <string name="default_notification_channel_id">Notification</string>
 
 </resources>

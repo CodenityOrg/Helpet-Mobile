@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.OrientationHelper;
@@ -18,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.executor.impl.ThreadExecutor;
 import com.kincodi.helpet.helpetmobile.domain.repository.PostRepository;
@@ -26,13 +24,10 @@ import com.kincodi.helpet.helpetmobile.helpers.Validation;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.NewPostPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.NewPostPresenterImpl;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.ImageAdapter;
-import com.kincodi.helpet.helpetmobile.presentation.ui.dialogs.MapDialogFragment;
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
 import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
-
 import java.util.ArrayList;
 import java.util.Date;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -40,12 +35,7 @@ import droidninja.filepicker.FilePickerBuilder;
 import droidninja.filepicker.FilePickerConst;
 import droidninja.filepicker.utils.Orientation;
 
-/**
- * Created by Julio on 19/03/2018.
- */
-
 public class NewPostActivity extends AppCompatActivity implements NewPostPresenter.View {
-
     private NewPostPresenterImpl newPostPresenter;
     private PostRepository postRepository;
     ProgressDialog progressDialog;
@@ -53,7 +43,6 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
     @BindView(R.id.edtDescription) EditText edtDescription;
     @BindView(R.id.edtLocation) EditText edtLocation;
     @BindView(R.id.edtPhone) EditText edtPhone;
-
     @BindView(R.id.spKind) Spinner spKind;
     @BindView(R.id.spSpecies) Spinner spSpecies;
     @BindView(R.id.spRace) Spinner spRace;
@@ -73,10 +62,9 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         postRepository = new PostRepositoryImpl();
         initPresenters();
         ButterKnife.bind(this);
-        String[] kinds = {"Encontrada","Perdida"};
+        String[] kinds = {"Encontrado","Perdido"};
         String[] species = {"Gato","Perro"};
         String[] races = {"Snauzer","Pastor Aleman"};
-
 
         spKind.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, kinds));
         spSpecies.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, species));
@@ -188,8 +176,16 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         if(Validation.isOnline()){
             Double[] position  = new Double[2];
             Date  date = new Date();
+            int type;
             String name = edtName.getText().toString();
             mKind = spKind.getSelectedItem().toString();
+
+            if (mKind == "Encontrado") {
+                type = 0;
+            } else {
+                type = 1;
+            }
+
             mSpecies = spSpecies.getSelectedItem().toString();
             mRace = spRace.getSelectedItem().toString();
             String description = edtDescription.getText().toString();
@@ -198,7 +194,7 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
             position[1] = -70.2485018;
             String phone = edtPhone.getText().toString();
             showProgress();
-            newPostPresenter.createPost(name,description,mRace,"",mKind,date,position,phone,photoPaths);
+            newPostPresenter.createPost(name,description,mRace,"",mKind,date,position,phone, type, photoPaths);
         }else
             Validation.showNoConnectionDialog(this);
 

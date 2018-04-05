@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity{
         });
         setupViewPager(viewPager);
     }
+
     private void setupViewPager(ViewPager viewPager) {
         PetFragmentPageAdapter adapter = new PetFragmentPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new PetLostFragment(), getString(R.string.title_section1));

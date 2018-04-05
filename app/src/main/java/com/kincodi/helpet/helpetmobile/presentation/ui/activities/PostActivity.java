@@ -17,11 +17,6 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-
-
-
-
-
         mViewPager = (ViewPager) findViewById(R.id.pager);
         setupViewPager(mViewPager);
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);

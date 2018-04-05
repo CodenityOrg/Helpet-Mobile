@@ -69,14 +69,6 @@ public class MapPetsFoundFragment extends Fragment implements
                                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
                         }
                     }
-                    BitmapDescriptor defaultMarker = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
-                    LatLng latlng = new LatLng(-18.025353, -70.2485018);
-                    Marker mapMarker = googleMap.addMarker(new MarkerOptions()
-                            .position(latlng)
-                            .title("dasdasda")
-                            .snippet("ASDDASdadas")
-                            .icon(defaultMarker));
-                    mapMarker.setTag(0);
                 }
             });
         return view;
@@ -106,11 +98,10 @@ public class MapPetsFoundFragment extends Fragment implements
             LatLng MarkerCurrentLocation = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
             mMarkerLastLocation = googleMap.addMarker(new MarkerOptions()
                     .position(MarkerCurrentLocation)
-                    .title("Henry"));
+                    .title(""));
             mMarkerLastLocation.setTag(0);
         }
         int permissionCheck = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
-
         if (permissionCheck!= PackageManager.PERMISSION_DENIED)
         {
             mLocationPermissionGranted = false;
