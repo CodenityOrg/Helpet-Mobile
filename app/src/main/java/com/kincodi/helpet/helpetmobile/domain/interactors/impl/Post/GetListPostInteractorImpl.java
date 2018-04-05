@@ -21,17 +21,18 @@ public class GetListPostInteractorImpl extends AbstractInteractor implements Get
     PostRepositoryImpl mPostRepositoryImpl;
     GetListPostInteractor.Callback mCallback;
     MainThread mMainThread;
-    String mType;
+    int mType;
 
     public GetListPostInteractorImpl(Executor threadExecutor,
                                      MainThread mainThread,
                                      PostRepositoryImpl postRepository,
                                      GetListPostInteractor.Callback callback,
-                                     String type) {
+                                     int type) {
         super(threadExecutor, mainThread);
         mType = type;
         mPostRepositoryImpl = postRepository;
         mCallback = callback;
+        mMainThread = mainThread;
 
     }
     void onSuccess(final List<Post> posts){

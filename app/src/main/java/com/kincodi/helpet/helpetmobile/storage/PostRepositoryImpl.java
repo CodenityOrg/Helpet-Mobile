@@ -62,7 +62,7 @@ public class PostRepositoryImpl implements PostRepository {
         return null;
     }
     @Override
-    public Response getPosts(String type) {
+    public Response getPosts(int type) {
         try{
             Call call = API.getPosts(type);
             Response<List<Post>> result =  call.execute();

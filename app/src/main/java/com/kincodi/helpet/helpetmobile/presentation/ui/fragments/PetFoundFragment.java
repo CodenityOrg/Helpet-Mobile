@@ -45,7 +45,8 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
         tabs =(TabLayout) v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
-        presenter.getPosts("found");
+        presenter.getPosts(1);
+
         return v;
     }
 

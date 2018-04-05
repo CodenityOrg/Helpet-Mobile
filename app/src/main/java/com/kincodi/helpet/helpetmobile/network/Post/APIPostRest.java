@@ -45,7 +45,7 @@ public interface APIPostRest {
 
 
     @GET("/posts")
-    Call<List<Post>> getPosts(@Query("type") String type);
+    Call<List<Post>> getPosts(@Query("type") int type);
 
     @GET("/posts/{id}")
     Call<Post> getPost(@Path("id") String id);
