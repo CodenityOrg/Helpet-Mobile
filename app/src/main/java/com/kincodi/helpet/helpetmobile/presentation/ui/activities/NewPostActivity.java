@@ -52,7 +52,6 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
     @BindView(R.id.edtName) EditText edtName;
     @BindView(R.id.edtDescription) EditText edtDescription;
     @BindView(R.id.edtLocation) EditText edtLocation;
-    @BindView(R.id.edtPersonContact) EditText edtPersonContact;
     @BindView(R.id.edtPhone) EditText edtPhone;
 
     @BindView(R.id.spKind) Spinner spKind;
@@ -195,13 +194,11 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
             mRace = spRace.getSelectedItem().toString();
             String description = edtDescription.getText().toString();
 
-
             position[0] = -18.025353;
             position[1] = -70.2485018;
-            String person_contact = edtPersonContact.getText().toString();
             String phone = edtPhone.getText().toString();
             showProgress();
-            newPostPresenter.createPost(name,description,mRace,person_contact,mKind,date,position,phone,photoPaths);
+            newPostPresenter.createPost(name,description,mRace,"",mKind,date,position,phone,photoPaths);
         }else
             Validation.showNoConnectionDialog(this);
 

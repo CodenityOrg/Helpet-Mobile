@@ -31,6 +31,7 @@ public class NewPostInteractorImpl extends AbstractInteractor
     private String mAge;
     private ArrayList<String> mFile;
     private MainThread mMainThread;
+    private int mType;
     private NewPostInteractor.Callback mCallback;
     public NewPostInteractorImpl(Executor threadExecutor,
                                  MainThread mainThread,
@@ -44,6 +45,7 @@ public class NewPostInteractorImpl extends AbstractInteractor
                                  Date date,
                                  Double[] position,
                                  String phone,
+                                 int type,
                                  ArrayList<String> file
     ) {
         super(threadExecutor, mainThread);
@@ -54,6 +56,7 @@ public class NewPostInteractorImpl extends AbstractInteractor
         mKind = kind;
         mRace = race;
         mDate = date;
+        mType = type;
         mAge  = age;
         mDescription = description;
         mPosition = position;
@@ -71,6 +74,8 @@ public class NewPostInteractorImpl extends AbstractInteractor
         post.setRace(mRace);
         post.setDate(mDate);
         post.setAge(mAge);
+        post.setType(mType);
+        
         Response result = mPostRepository.create(mFile,post);
         if (result!=null){
             if (result.isSuccessful()){

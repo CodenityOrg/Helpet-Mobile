@@ -48,7 +48,7 @@
     </style>
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#8a8b8c</item>
+        <item name="android:textColor">#bc1111</item>
         <item name="textAllCaps">true</item>
     </style>
 </resources>

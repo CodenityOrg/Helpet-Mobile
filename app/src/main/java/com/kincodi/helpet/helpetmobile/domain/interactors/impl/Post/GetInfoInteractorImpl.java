@@ -2,43 +2,41 @@ package com.kincodi.helpet.helpetmobile.domain.interactors.impl.Post;
 
 import com.kincodi.helpet.helpetmobile.domain.executor.Executor;
 import com.kincodi.helpet.helpetmobile.domain.executor.MainThread;
+import com.kincodi.helpet.helpetmobile.domain.interactors.GetInfoInteractor;
 import com.kincodi.helpet.helpetmobile.domain.interactors.GetListPostInteractor;
 import com.kincodi.helpet.helpetmobile.domain.interactors.base.AbstractInteractor;
 import com.kincodi.helpet.helpetmobile.domain.model.Post;
-import com.kincodi.helpet.helpetmobile.presentation.presenters.base.AbstractPresenter;
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
 
 import java.util.List;
 
 import retrofit2.Response;
 
-/**
- * Created by Julio on 2/04/2018.
- */
-
-public class GetListPostInteractorImpl extends AbstractInteractor implements GetListPostInteractor {
+public class GetInfoInteractorImpl extends AbstractInteractor implements GetInfoInteractor {
 
     PostRepositoryImpl mPostRepositoryImpl;
-    GetListPostInteractor.Callback mCallback;
     MainThread mMainThread;
-    String mType;
+    GetInfoInteractor.Callback mCallback;
+    String mPostId;
 
-    public GetListPostInteractorImpl(Executor threadExecutor,
+    public GetInfoInteractorImpl(Executor threadExecutor,
                                      MainThread mainThread,
                                      PostRepositoryImpl postRepository,
-                                     GetListPostInteractor.Callback callback,
-                                     String type) {
+                                     String postId,
+                                     GetInfoInteractor.Callback callback) {
         super(threadExecutor, mainThread);
-        mType = type;
         mPostRepositoryImpl = postRepository;
         mCallback = callback;
-
+        mPostId = postId;
     }
-    void onSuccess(final List<Post> posts){
+
+
+
+    void onSuccess(final Post post){
         mMainThread.post(new Runnable() {
             @Override
             public void run() {
-                mCallback.onGotPosts(posts);
+                mCallback.gotInfo(post);
             }
         });
     }
@@ -47,17 +45,18 @@ public class GetListPostInteractorImpl extends AbstractInteractor implements Get
         mMainThread.post(new Runnable() {
             @Override
             public void run() {
-                mCallback.onFailedGetPosts(message);
+                mCallback.onGetFailed(message);
             }
         });
     }
+
     @Override
     public void run() {
-        Response response = mPostRepositoryImpl.getPosts(mType);
+        Response response = mPostRepositoryImpl.getPost(mPostId);
         if (response!=null){
             if (response.isSuccessful()){
-                List<Post> posts = (List<Post>) response.body();
-                onSuccess(posts);
+                Post post = (Post) response.body();
+                onSuccess(post);
 
             }else{
                 onFailed("Intente nuevamente");
