@@ -20,6 +20,7 @@ public class Post implements Serializable {
     private Date date;
     private Double[] position;
     private String phone;
+    private List<Photo> photos;
 
     public String getName() {
         return name;
