@@ -15,8 +15,6 @@ import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.GetPost
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.Detail.InfoFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.Detail.MapFragment;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFragment;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFragment;
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
 import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
 

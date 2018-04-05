@@ -2,16 +2,12 @@ package com.kincodi.helpet.helpetmobile.presentation.ui.activities;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFragment;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MoreFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.PetFoundFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.PetLostFragment;

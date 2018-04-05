@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsLostFragment">
+    tools:context="com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFoundFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/recycler"
+        android:id="@+id/recycler2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="3dp"
@@ -19,4 +19,5 @@
         android:layout_gravity="end|bottom"
         android:src="@mipmap/ic_launcher"
         android:layout_margin="16dp"/>
+
 </FrameLayout>

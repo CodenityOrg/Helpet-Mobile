@@ -36,7 +36,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ListPetsFragment extends Fragment {
+public class ListPetsLostFragment extends Fragment {
 
     private RecyclerView recycler;
     private RecyclerView.LayoutManager lManager;
@@ -46,7 +46,7 @@ public class ListPetsFragment extends Fragment {
     private List<Post> mPosts = new ArrayList<>();
     private PostAdapter postAdapter;
 
-    public ListPetsFragment() {
+    public ListPetsLostFragment() {
     }
 
     @Override public void onCreate(Bundle savedInstanceState) {

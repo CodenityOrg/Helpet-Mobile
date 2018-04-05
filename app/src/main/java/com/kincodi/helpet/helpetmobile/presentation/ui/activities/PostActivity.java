@@ -7,8 +7,8 @@ import android.os.Bundle;
 
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFragment;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFragment;
+import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsLostFragment;
+import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFoundFragment;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -30,8 +30,8 @@ public class PostActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         PetFragmentPageAdapter adapter = new PetFragmentPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ListPetsFragment(), getString(R.string.title_section1));
-        adapter.addFragment(new MapPetsFragment(), getString(R.string.title_section2));
+        adapter.addFragment(new ListPetsLostFragment(), getString(R.string.title_section1));
+        adapter.addFragment(new MapPetsFoundFragment(), getString(R.string.title_section2));
         viewPager.setAdapter(adapter);
     }
 }

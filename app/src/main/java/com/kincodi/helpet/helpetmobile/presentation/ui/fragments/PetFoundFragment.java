@@ -53,17 +53,17 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
     private void setupViewPager(ViewPager viewPager) {
         adapter = new PetFragmentPageAdapter(getChildFragmentManager());
 
-        adapter.addFragment(new ListPetsFragment(), getString(R.string.title_section1));
-        adapter.addFragment(new MapPetsFragment(), getString(R.string.title_section2));
+        adapter.addFragment(new ListPetsFoundFragment(), getString(R.string.title_section1));
+        adapter.addFragment(new MapPetsFoundFragment(), getString(R.string.title_section2));
         viewPager.setAdapter(adapter);
     }
 
     @Override
     public void onSuccessGotPost(List<Post> posts) {
-        ListPetsFragment listPetsFragment = new ListPetsFragment();
+        ListPetsLostFragment listPetsFragment = new ListPetsLostFragment();
         listPetsFragment.addPosts(posts);
 
-        MapPetsFragment mapPetsFragment = new MapPetsFragment();
+        MapPetsFoundFragment mapPetsFragment = new MapPetsFoundFragment();
         listPetsFragment.addPosts(posts);
 
         adapter.resetFragments();
