@@ -12,6 +12,7 @@ import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFragment;
+import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MoreFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.PetFoundFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.PetLostFragment;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity{
                             case R.id.action_found:
                                 viewPager.setCurrentItem(1);
                                 break;
+                            case R.id.action_more:
+                                viewPager.setCurrentItem(2);
                         }
                         return false;
                     }
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity{
         PetFragmentPageAdapter adapter = new PetFragmentPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new PetLostFragment(), getString(R.string.title_section1));
         adapter.addFragment(new PetFoundFragment(), getString(R.string.title_section2));
+        adapter.addFragment(new MoreFragment(),getString(R.string.title_seccion3));
         viewPager.setAdapter(adapter);
     }
 }

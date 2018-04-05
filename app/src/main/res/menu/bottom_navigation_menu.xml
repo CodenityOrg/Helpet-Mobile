@@ -13,5 +13,10 @@
         android:enabled="true"
         android:icon="@mipmap/ic_launcher"
         android:title="Encontrados"/>
-
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/action_more"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:title="Mas"/>
 </menu>
