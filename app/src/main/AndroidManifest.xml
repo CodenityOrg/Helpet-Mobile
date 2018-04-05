@@ -57,11 +57,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:replace="android:name" />
         <activity android:name=".presentation.ui.activities.NewPostActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".presentation.ui.activities.ShowPhotoActivity" />
         <activity android:name=".presentation.ui.activities.DetailActivity" />

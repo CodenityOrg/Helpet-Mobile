@@ -49,7 +49,6 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
     private NewPostPresenterImpl newPostPresenter;
     private PostRepository postRepository;
     ProgressDialog progressDialog;
-
     @BindView(R.id.edtName) EditText edtName;
     @BindView(R.id.edtDescription) EditText edtDescription;
     @BindView(R.id.edtLocation) EditText edtLocation;
@@ -84,6 +83,11 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         mKind = spKind.getSelectedItem().toString();
         mSpecies = spSpecies.getSelectedItem().toString();
         mRace = spRace.getSelectedItem().toString();
+        Intent intent = getIntent();
+        Double position = intent.getDoubleExtra("position",0);
+        Log.d("POSITION", String.valueOf(position));
+
+
     }
 
     @Override
