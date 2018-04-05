@@ -14,39 +14,30 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
             <EditText
                 android:id="@+id/edtName"
                 android:inputType="text"
                 android:hint="Nombre (Opcional)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
             <Spinner
                 android:id="@+id/spKind"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                />
-
-
+                android:layout_height="40dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp">
-
             <Spinner
                 android:id="@+id/spSpecies"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp" />
-
             <Spinner
                 android:id="@+id/spRace"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"/>
-
         </LinearLayout>
         <EditText
             android:id="@+id/edtDescription"
@@ -72,14 +63,10 @@
                 android:background="#00ffffff"
                 android:id="@+id/btn_show_map"/>
         </LinearLayout>
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp">
-
-
             <EditText
                 android:id="@+id/edtPhone"
                 android:hint="@string/number_contact"
@@ -87,7 +74,6 @@
                 android:inputType="phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
         </LinearLayout>
         <TextView
             android:text="Imágenes"
@@ -97,7 +83,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="90dp">
-
             <ImageButton
                 android:id="@+id/btnImg1"
                 android:background="#00ffffff"
@@ -105,15 +90,11 @@
                 android:src="@mipmap/icofotomas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-
-
         </LinearLayout>
-
         <Button
             android:id="@+id/btnPublisher"
             android:text="@string/publisher"
