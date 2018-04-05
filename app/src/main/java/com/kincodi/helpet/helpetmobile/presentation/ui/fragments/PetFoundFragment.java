@@ -40,7 +40,7 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_pet_lost, container, false);
+        View v = inflater.inflate(R.layout.fragment_pet_found, container, false);
         mViewPager = v.findViewById(R.id.pager);
         tabs = v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);

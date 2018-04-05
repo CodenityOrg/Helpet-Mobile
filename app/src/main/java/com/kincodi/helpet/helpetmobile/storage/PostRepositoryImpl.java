@@ -42,7 +42,8 @@ public class PostRepositoryImpl implements PostRepository {
             List<MultipartBody.Part> parts= new ArrayList();
             for (int i = 0; i<photoPaths.size();i++){
                 File file = new File(photoPaths.get(i));
-                part = MultipartBody.Part.createFormData("photos", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+                part = MultipartBody.Part.createFormData("photos", file.getName(),
+                        RequestBody.create(MediaType.parse("image/*"), file));
                 parts.add(part);
             }
             Call call = API.addPhoto(

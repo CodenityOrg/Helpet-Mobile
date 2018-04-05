@@ -77,6 +77,8 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         String[] kinds = {"Encontrada","Perdida"};
         String[] species = {"Gato","Perro"};
         String[] races = {"Snauzer","Pastor Aleman"};
+
+
         spKind.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, kinds));
         spSpecies.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, species));
         spRace.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, races));
@@ -90,8 +92,7 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case FilePickerConst.REQUEST_CODE_PHOTO:
@@ -134,7 +135,6 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         }
     }
     private static final int CUSTOM_REQUEST_CODE = 532;
-
     public void onPickPhoto() {
         int maxCount = MAX_ATTACHMENT_COUNT - docPaths.size();
         if ((docPaths.size() + photoPaths.size()) == MAX_ATTACHMENT_COUNT) {
@@ -194,6 +194,8 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
             mSpecies = spSpecies.getSelectedItem().toString();
             mRace = spRace.getSelectedItem().toString();
             String description = edtDescription.getText().toString();
+
+
             position[0] = -18.025353;
             position[1] = -70.2485018;
             String person_contact = edtPersonContact.getText().toString();

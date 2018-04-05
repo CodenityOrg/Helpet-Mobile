@@ -31,13 +31,14 @@ public class PetLostFragment extends Fragment implements GetListPostPresenter.Vi
         super.onCreate(savedInstanceState);
         postRepository = new PostRepositoryImpl();
         presenter = new GetListPostPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository,this );
-
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_pet_lost, container, false);
-        mViewPager = v.findViewById(R.id.pager);
-        tabs = v.findViewById(R.id.tabs);
+
+
+        mViewPager = (ViewPager) v.findViewById(R.id.pager);
+        tabs =(TabLayout) v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
         presenter.getPosts("lost");
