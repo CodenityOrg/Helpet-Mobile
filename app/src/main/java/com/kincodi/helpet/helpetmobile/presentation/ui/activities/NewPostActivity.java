@@ -193,7 +193,7 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
             String name = edtName.getText().toString();
             mKind = spKind.getSelectedItem().toString();
 
-            if (mKind == "Encontrado") {
+            if (mKind.equals("Encontrado")) {
                 type = 0;
             } else {
                 type = 1;

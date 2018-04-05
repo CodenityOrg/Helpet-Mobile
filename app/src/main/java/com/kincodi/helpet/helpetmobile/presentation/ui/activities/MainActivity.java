@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_lost:
-                                viewPager.setCurrentItem(1);
+                                viewPager.setCurrentItem(0);
                                 break;
                             case R.id.action_found:
                                 viewPager.setCurrentItem(1);

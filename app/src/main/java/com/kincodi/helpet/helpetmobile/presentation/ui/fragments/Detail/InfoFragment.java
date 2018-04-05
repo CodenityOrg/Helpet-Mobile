@@ -37,7 +37,7 @@ public class InfoFragment extends Fragment {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             textSliderView
                     .description(photo.getName())
-                    .image(photo.getUrl())
+                    .image(photo.getPath())
                     .setScaleType(BaseSliderView.ScaleType.Fit);
             mDemoSlider.addSlider(textSliderView);
         }

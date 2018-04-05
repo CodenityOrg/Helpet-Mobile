@@ -1,6 +1,5 @@
 package com.kincodi.helpet.helpetmobile.domain.interactors;
 
-import com.kincodi.helpet.helpetmobile.domain.interactors.base.Interactor;
 import com.kincodi.helpet.helpetmobile.domain.model.Post;
 
 import java.util.List;

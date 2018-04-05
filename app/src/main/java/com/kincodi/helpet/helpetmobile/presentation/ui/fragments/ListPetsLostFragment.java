@@ -44,10 +44,12 @@ public class ListPetsLostFragment extends Fragment {
     private PostRepositoryImpl postRepository;
     private GetListPostPresenterImpl presenter;
     private List<Post> mPosts = new ArrayList<>();
-    private PostAdapter postAdapter;
+    private PostAdapter postAdapter = new PostAdapter(mPosts);
 
     public ListPetsLostFragment() {
     }
+
+
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +74,6 @@ public class ListPetsLostFragment extends Fragment {
         recycler = view.findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
         postRepository = new PostRepositoryImpl();
-        postAdapter = new PostAdapter(mPosts);
         lManager = new LinearLayoutManager(getActivity());
         recycler.setLayoutManager(lManager);
         recycler.setAdapter(postAdapter);

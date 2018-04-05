@@ -15,5 +15,5 @@ public interface GetListPostPresenter {
         void onFailedGotPost(String message);
 
     }
-    void getPosts(String type);
+    void getPosts(int type);
 }
