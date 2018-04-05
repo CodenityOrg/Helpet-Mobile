@@ -18,6 +18,7 @@ public class UserSharedPreferences {
         localEditor.putString("phone",user.getPhone());
         localEditor.commit();
     }
+
     static public boolean logged(){
         return prefs.getBoolean("login",false);
     }
@@ -25,11 +26,21 @@ public class UserSharedPreferences {
         localEditor.putBoolean("login",login);
         localEditor.commit();
     }
-    static public String getFirebaseId(){
+    static public String getFireBaseId(){
         return prefs.getString("firebaseId","");
     }
+
+    static public void setFireBaseId(String firebaseId){
+        localEditor.putString("firebaseId",firebaseId);
+        localEditor.commit();
+    }
+
+
+
     static public User restoreUser(){
         User user = new User();
+
+        user.setId(prefs.getString("id",""));
         user.setFirstName(prefs.getString("name",""));
         user.setLastName(prefs.getString("lastname",""));
         user.setEmail(prefs.getString("email",""));

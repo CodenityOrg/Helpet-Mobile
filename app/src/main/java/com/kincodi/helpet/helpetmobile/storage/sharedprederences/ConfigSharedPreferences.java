@@ -13,29 +13,13 @@ public class ConfigSharedPreferences {
     protected static SharedPreferences prefs = App.getInstance().getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
     protected static SharedPreferences.Editor localEditor = prefs.edit();
 
-    static public void saveConfig(String remToken, String confToken){
-        localEditor.putString("remToken",remToken);
-        localEditor.putString("confToken",confToken);
+    static public void saveConfig(String remToken){
+        localEditor.putString("Authorization",remToken);
         localEditor.commit();
     }
 
-
-    static public void saveRembToken(String rembToken){
-        localEditor.putString("rembToken",rembToken);
-        localEditor.commit();
-    }
-
-    static public void saveConfToken(String confToken){
-        localEditor.putString("confToken",confToken);
-        localEditor.commit();
-    }
-
-    static public String restoreConfToken(){
-        return prefs.getString("confToken","");
-    }
-
-    static public String restoreRembToken(){
-        return prefs.getString("rembToken","");
+    static public String restoreToken(){
+        return prefs.getString("Authorization","");
     }
 
 }

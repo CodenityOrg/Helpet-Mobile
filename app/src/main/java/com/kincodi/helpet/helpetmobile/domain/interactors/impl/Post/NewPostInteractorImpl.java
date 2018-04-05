@@ -25,7 +25,7 @@ public class NewPostInteractorImpl extends AbstractInteractor
     private String mKind;
     private String mRace;
     private String mDescription;
-    private Object mPosition;
+    private Double[] mPosition;
     private String mPhone;
     private Date mDate;
     private String mAge;
@@ -42,7 +42,7 @@ public class NewPostInteractorImpl extends AbstractInteractor
                                  String age,
                                  String kind,
                                  Date date,
-                                 Object position,
+                                 Double[] position,
                                  String phone,
                                  ArrayList<String> file
     ) {

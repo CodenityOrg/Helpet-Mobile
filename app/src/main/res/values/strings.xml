@@ -29,7 +29,7 @@
 
     <string name="location">Ubicacion</string>
     <string name="contact">Persona de Contacto</string>
-    <string name="number_contect">Celular de Contacto</string>
+    <string name="number_contact">Celular de Contacto</string>
     <string name="description">Description</string>
     <string name="publisher">Publicar</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -37,4 +37,7 @@
 
     <string name="title_section1">MASCOTAS</string>
     <string name="title_section2">MAPA</string>
+    <string name="title_map">MAPA</string>
+    <string name="title_info">INFO</string>
+    <string name="default_notification_channel_id">Notification</string>
 </resources>

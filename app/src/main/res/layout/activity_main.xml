@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:design="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
     app:ignore="NamespaceTypo">
 
-    <FrameLayout
-        android:id="@+id/main_fragment_placeholder"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </FrameLayout>
+
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:itemBackground="@color/colorPrimary"
+        android:background="@color/colorPrimary"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         design:menu="@menu/bottom_navigation_menu">
     </android.support.design.widget.BottomNavigationView>
 
-</LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigation_view"
+        android:layout_alignParentTop="true"/>
+</RelativeLayout>
 
 <!--
 
 design:itemBackground="@color/primary"
         design:itemIconTint="@color/bottom_navigation_icons_colors"
         design:itemTextColor="@color/bottom_navigation_icons_colors"
-
+<android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@drawable/select_bottom_navigation"
+        app:itemTextColor="@drawable/select_bottom_navigation"
+        design:menu="@menu/bottom_navigation_menu" />
 -->

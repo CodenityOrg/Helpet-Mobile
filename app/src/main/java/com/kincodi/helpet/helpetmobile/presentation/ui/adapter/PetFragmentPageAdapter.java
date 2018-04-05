@@ -18,23 +18,11 @@ public class PetFragmentPageAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragments = new ArrayList<>();
     private final List<String> mFragmentTitles = new ArrayList<>();
     private Context context;
-    // manejador de filtro
 
-    /*public PetFragmentPageAdapter(FragmentManager fm, Context context, FilterManager filterManager) {
-        super(fm);
-        this.context = context;
-        this.filterManager = filterManager;
-    }*/
     public PetFragmentPageAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    /*@Override
-    public void destroyItem(ViewGroup container, int position, Object object){
-        IncidenceCodeFragment fragment = (IncidenceCodeFragment) object;
-        filterManager.deleteObserver(fragment);
-        super.destroyItem(container,position,object);
-    }*/
     @Override
     public Fragment getItem(int position) {return mFragments.get(position);}
     @Override

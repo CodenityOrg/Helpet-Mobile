@@ -1,36 +1,25 @@
 package com.kincodi.helpet.helpetmobile.domain.model;
 
 
+import java.io.Serializable;
+import java.sql.Array;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Julio on 20/02/2018.
  */
 
-public class Post {
+public class Post implements Serializable {
 
     private String name;
     private String description;
     private String race;
-    private String kind;
     private String age;
-    private Object position;
-    private String phone;
+    private String kind;
     private Date date;
-
-    public Post(String name, String description, String race, String kind, String age, Object position, String phone, Date date) {
-        this.name = name;
-        this.description = description;
-        this.race = race;
-        this.kind = kind;
-        this.age = age;
-        this.position = position;
-        this.phone = phone;
-        this.date = date;
-    }
-
-    public Post() {
-    }
+    private Double[] position;
+    private String phone;
 
     public String getName() {
         return name;
@@ -56,14 +45,6 @@ public class Post {
         this.race = race;
     }
 
-    public String getKind() {
-        return kind;
-    }
-
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-
     public String getAge() {
         return age;
     }
@@ -72,11 +53,27 @@ public class Post {
         this.age = age;
     }
 
-    public Object getPosition() {
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Double[] getPosition() {
         return position;
     }
 
-    public void setPosition(Object position) {
+    public void setPosition(Double[] position) {
         this.position = position;
     }
 
@@ -88,11 +85,17 @@ public class Post {
         this.phone = phone;
     }
 
-    public Date getDate() {
-        return date;
+    public Post() {
     }
 
-    public void setDate(Date date) {
+    public Post(String name, String description, String race, String age, String kind, Date date, Double[] position, String phone) {
+        this.name = name;
+        this.description = description;
+        this.race = race;
+        this.age = age;
+        this.kind = kind;
         this.date = date;
+        this.position = position;
+        this.phone = phone;
     }
 }

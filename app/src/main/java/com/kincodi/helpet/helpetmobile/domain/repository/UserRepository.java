@@ -9,6 +9,7 @@ import retrofit2.Response;
  */
 
 public interface UserRepository {
+    Response updateFireBaseId(String fireBaseId, String oldFireBaseId);
 
     Response register (User user);
     Response login (User user);

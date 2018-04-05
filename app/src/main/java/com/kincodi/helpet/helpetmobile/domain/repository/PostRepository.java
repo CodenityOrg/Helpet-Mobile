@@ -13,5 +13,6 @@ import retrofit2.Response;
 
 public interface PostRepository {
 
+    Response getPosts();
     Response create (ArrayList<String> file, Post post);
 }

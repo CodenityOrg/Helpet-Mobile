@@ -12,23 +12,17 @@ import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAd
 public class PetLostFragment extends Fragment {
     ViewPager mViewPager;
     TabLayout tabs;
-    public PetLostFragment() {
-    }
+    public PetLostFragment() {}
+
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.fragment_pet_lost, container, false);
-
         mViewPager = (ViewPager) v.findViewById(R.id.pager);
         tabs = (TabLayout) v.findViewById(R.id.tabs);
-
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
-
         return v;
     }
 

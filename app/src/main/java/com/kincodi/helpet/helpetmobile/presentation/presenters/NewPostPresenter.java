@@ -2,6 +2,8 @@ package com.kincodi.helpet.helpetmobile.presentation.presenters;
 
 import com.kincodi.helpet.helpetmobile.presentation.ui.BaseView;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,7 +16,7 @@ public interface NewPostPresenter {
     interface View extends BaseView {
         void onCreated();
         void onFailed(String message);
-        void createNormal();
+        void createNormal() throws JSONException;
     }
     void createPost(String name,
                     String description,
@@ -22,7 +24,7 @@ public interface NewPostPresenter {
                     String age,
                     String kind,
                     Date date,
-                    Object position,
+                    Double[] position,
                     String phone,
                     ArrayList<String> file);
 }

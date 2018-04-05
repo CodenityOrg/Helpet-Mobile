@@ -20,24 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    /**
-     * This is our main backend/server URL.
-     */
-    public static final String REST_API_URL = "http://192.168.0.12:3000/";
-
+    public static final String REST_API_URL = "http://192.168.0.16:3000/";
     private static Retrofit s_retrofit;
-
-
-
     static {
-
-        // enable logging
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        //SmartCallFactory smartFactory = new SmartCallFactory(BasicCaching.fromCtx(this));
-
-
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60,TimeUnit.SECONDS)
@@ -46,29 +33,18 @@ public class RestClient {
                             @Override
                             public Response intercept(Interceptor.Chain chain) throws IOException {
                                 Request request = chain.request().newBuilder()
-                                        .addHeader("api-token", ConfigSharedPreferences.restoreRembToken())
-                                        .addHeader("user-id", UserSharedPreferences.restoreUser().getId() + "")
+                                        .addHeader("Authorization", ConfigSharedPreferences.restoreToken())
                                         .build();
-                                //Response originalResponse = chain.proceed(request);
-
-
-
                                 return chain.proceed(request);
                             }
                         }
                 ).build();
-
-
-
         s_retrofit = new Retrofit.Builder()
                 .baseUrl(REST_API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient)
                 .build();
     }
-
-
-
     public static <T> T getService(Class<T> serviceClass) {
         return s_retrofit.create(serviceClass);
     }

@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         userRepository = new UserRepositoryImpl();
@@ -49,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();
-        Intent i = new Intent(this,PostActivity.class);
+        Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
     @Override public void onFailed(String message) {
