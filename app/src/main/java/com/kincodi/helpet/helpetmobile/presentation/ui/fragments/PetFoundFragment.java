@@ -41,8 +41,8 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_pet_found, container, false);
-        mViewPager = v.findViewById(R.id.pager);
-        tabs = v.findViewById(R.id.tabs);
+        mViewPager =(ViewPager) v.findViewById(R.id.pager);
+        tabs =(TabLayout) v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
         presenter.getPosts("found");
@@ -51,7 +51,8 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        adapter = new PetFragmentPageAdapter(getChildFragmentManager());
+        //adapter = new PetFragmentPageAdapter(getChildFragmentManager());
+        PetFragmentPageAdapter adapter = new PetFragmentPageAdapter(getChildFragmentManager());
 
         adapter.addFragment(new ListPetsFoundFragment(), getString(R.string.title_section1));
         adapter.addFragment(new MapPetsFoundFragment(), getString(R.string.title_section2));

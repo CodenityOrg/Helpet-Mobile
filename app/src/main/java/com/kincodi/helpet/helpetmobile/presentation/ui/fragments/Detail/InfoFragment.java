@@ -14,6 +14,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.model.Photo;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -33,11 +34,18 @@ public class InfoFragment extends Fragment {
 
         mDemoSlider = getActivity().findViewById(R.id.slider);
 
-        for (Photo photo: photos) {
+        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Hannibal",R.mipmap.ic_launcher);
+        file_maps.put("Big Bang Theory",R.mipmap.ic_launcher);
+        file_maps.put("House of Cards",R.mipmap.ic_huella);
+        file_maps.put("Game of Thrones", R.mipmap.ic_login);
+
+
+        for (String photo: file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             textSliderView
-                    .description(photo.getName())
-                    .image(photo.getUrl())
+                    .description(photo)
+                    .image(file_maps.get(photo))
                     .setScaleType(BaseSliderView.ScaleType.Fit);
             mDemoSlider.addSlider(textSliderView);
         }
