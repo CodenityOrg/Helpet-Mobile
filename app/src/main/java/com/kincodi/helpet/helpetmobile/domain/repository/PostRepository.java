@@ -15,4 +15,5 @@ public interface PostRepository {
 
     Response getPosts(String type);
     Response create (ArrayList<String> file, Post post);
+    Response getPost(String postId);
 }

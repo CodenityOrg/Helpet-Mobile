@@ -2,7 +2,7 @@ package com.kincodi.helpet.helpetmobile.domain.model;
 
 public class Photo {
     private String name;
-    private String url;
+    private String path;
 
     public String getName() {
         return name;
@@ -12,11 +12,11 @@ public class Photo {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPath(String path) {
+        this.path = path;
     }
 }

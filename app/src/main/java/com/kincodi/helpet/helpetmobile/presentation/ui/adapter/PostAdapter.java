@@ -57,7 +57,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             race = (TextView) v.findViewById(R.id.txtRace);
         }
         public void bind(final Post post,Context context){
-            Picasso.with(context).load((Uri) post.getPhotos()).into(img);
+            Picasso.with(context)
+                    .load((Uri) post.getPhotos())
+                    .placeholder(0)
+                    .into(img);
+
             name.setText(post.getName());
             description.setText(post.getDescription());
             race.setText(post.getRace());

@@ -71,4 +71,16 @@ public class PostRepositoryImpl implements PostRepository {
         }
         return null;
     }
+
+    @Override
+    public Response getPost(String postId) {
+        try {
+            Call call = API.getPost(postId);
+            Response<Post> result = call.execute();
+            return result;
+        } catch (IOException e) {
+            Log.e("Error Exception",e.toString());
+        }
+        return null;
+    }
 }
