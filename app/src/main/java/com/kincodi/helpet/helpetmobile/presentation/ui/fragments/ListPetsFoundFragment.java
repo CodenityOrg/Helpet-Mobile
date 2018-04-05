@@ -7,14 +7,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.model.Post;
+import com.kincodi.helpet.helpetmobile.presentation.presenters.GetListPostPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.GetListPostPresenterImpl;
 import com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivity;
+import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PostAdapter;
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
 
@@ -24,7 +27,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListPetsFoundFragment extends Fragment {
+public class ListPetsFoundFragment extends Fragment implements GetListPostPresenter.View{
 
     private RecyclerView recycler;
     private RecyclerView.LayoutManager lManager;
@@ -33,6 +36,7 @@ public class ListPetsFoundFragment extends Fragment {
     private GetListPostPresenterImpl presenter;
     private List<Post> mPosts = new ArrayList<>();
     private PostAdapter postAdapter;
+    private PetFragmentPageAdapter adapter;
 
     public ListPetsFoundFragment() {
     }
@@ -58,4 +62,35 @@ public class ListPetsFoundFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
+
+    @Override
+    public void onSuccessGotPost(List<Post> posts) {
+        Log.d("ASDAFSDFASDF", String.valueOf(posts));
+        addPosts(posts);
+    }
+
+    @Override
+    public void onFailedGotPost(String message) {
+
+    }
+
+
+    public void addPosts(List<Post> posts) {
+        postAdapter.addPosts(posts);
+        postAdapter.notifyDataSetChanged();
+    }
 }

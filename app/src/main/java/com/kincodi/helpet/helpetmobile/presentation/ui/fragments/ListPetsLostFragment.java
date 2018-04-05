@@ -36,7 +36,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ListPetsLostFragment extends Fragment {
+public class ListPetsLostFragment extends Fragment implements GetListPostPresenter.View{
 
     private RecyclerView recycler;
     private RecyclerView.LayoutManager lManager;
@@ -88,4 +88,28 @@ public class ListPetsLostFragment extends Fragment {
     }
 
 
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
+
+    @Override
+    public void onSuccessGotPost(List<Post> posts) {
+        addPosts(posts);
+    }
+
+    @Override
+    public void onFailedGotPost(String message) {
+
+    }
 }

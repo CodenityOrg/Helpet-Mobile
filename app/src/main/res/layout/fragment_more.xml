@@ -12,14 +12,19 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="50dp">
         <Button
+            android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Iniciar"
             android:padding="30dp"
+            android:onClick="OnclickLogin"
             android:background="@drawable/btn_simple"
             android:drawableTop="@mipmap/ic_login"
             android:layout_margin="2dp"/>
+
         <Button
+            android:onClick="OnclickRegister"
+            android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Registro"

@@ -99,7 +99,6 @@ public class MapPetsLostFragment extends Fragment implements
                 ActivityCompat.requestPermissions(getActivity(),
                         new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-
                 ActivityCompat.requestPermissions(getActivity(),
                         new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                         PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
@@ -113,8 +112,7 @@ public class MapPetsLostFragment extends Fragment implements
             mMarkerLastLocation.setTag(0);
         }
         int permissionCheck = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (permissionCheck!= PackageManager.PERMISSION_DENIED)
-        {
+        if (permissionCheck!= PackageManager.PERMISSION_DENIED) {
             mLocationPermissionGranted = false;
             LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
         }

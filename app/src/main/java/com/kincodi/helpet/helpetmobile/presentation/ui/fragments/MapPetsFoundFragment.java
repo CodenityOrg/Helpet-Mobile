@@ -45,6 +45,21 @@ public class MapPetsFoundFragment extends Fragment implements
     private static final int PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 2;
     private Marker mMarkerLastLocation;
     public MapPetsFoundFragment() {
+
+        for (int i=0;items.size()>i;i++){
+            Double a = items.get(i).getLatitud();
+            Double b = items.get(i).getLongitud();
+            BitmapDescriptor defaultMarker = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+            LatLng latlng = new LatLng(a, b);
+            Marker mapMarker = googleMap.addMarker(new MarkerOptions()
+                    .position(latlng)
+                    .title(items.get(i).getTitle())
+                    .snippet(items.get(i).getDescription())
+                    .icon(defaultMarker));
+            mapMarker.setTag(0);
+
+        }
+
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

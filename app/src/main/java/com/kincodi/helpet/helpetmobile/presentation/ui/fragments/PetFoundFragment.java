@@ -61,7 +61,7 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
 
     @Override
     public void onSuccessGotPost(List<Post> posts) {
-        ListPetsLostFragment listPetsFragment = new ListPetsLostFragment();
+        /*ListPetsLostFragment listPetsFragment = new ListPetsLostFragment();
         listPetsFragment.addPosts(posts);
 
         MapPetsFoundFragment mapPetsFragment = new MapPetsFoundFragment();
@@ -70,7 +70,7 @@ public class PetFoundFragment extends Fragment implements GetListPostPresenter.V
         adapter.resetFragments();
         adapter.addFragment(listPetsFragment, getString(R.string.title_section1));
         adapter.addFragment(mapPetsFragment, getString(R.string.title_section2));
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
     }
 
     @Override

@@ -33,7 +33,7 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_info, container, false);
-        mDemoSlider = getActivity().findViewById(R.id.slider);
+        mDemoSlider = view.findViewById(R.id.slider);
 
         HashMap<String,String> urls = new HashMap<String, String>();
         for (String photo: urls.keySet()) {
