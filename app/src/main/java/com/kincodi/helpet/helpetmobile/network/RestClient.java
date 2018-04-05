@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    public static final String REST_API_URL = "http://192.168.1.35:3000/";
+    public static final String REST_API_URL = "http://172.20.10.5:3000/";
     private static Retrofit s_retrofit;
     static {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

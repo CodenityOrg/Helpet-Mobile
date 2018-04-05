@@ -39,6 +39,11 @@ public class PetFragmentPageAdapter extends FragmentPagerAdapter {
         mFragmentTitles.add(title);
     }
 
+    public void reset() {
+        mFragments = new ArrayList<>();
+        mFragmentTitles = new ArrayList<>();
+    }
+
     public void setFragments(List<Fragment> fragments) {
         mFragments = fragments;
     }

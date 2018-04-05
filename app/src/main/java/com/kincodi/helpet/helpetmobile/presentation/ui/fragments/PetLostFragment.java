@@ -17,7 +17,7 @@ import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
 
 import java.util.List;
 
-public class PetLostFragment extends Fragment implements GetListPostPresenter.View {
+public class PetLostFragment extends Fragment  {
     ViewPager mViewPager;
     TabLayout tabs;
     private GetListPostPresenterImpl presenter;
@@ -30,7 +30,6 @@ public class PetLostFragment extends Fragment implements GetListPostPresenter.Vi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         postRepository = new PostRepositoryImpl();
-        presenter = new GetListPostPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository,this );
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +40,6 @@ public class PetLostFragment extends Fragment implements GetListPostPresenter.Vi
         tabs =(TabLayout) v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
-        presenter.getPosts(0);
 
         return v;
     }
@@ -53,37 +51,4 @@ public class PetLostFragment extends Fragment implements GetListPostPresenter.Vi
         viewPager.setAdapter(adapter);
     }
 
-    @Override
-    public void onSuccessGotPost(List<Post> posts) {
-        ListPetsLostFragment listPetsFragment = new ListPetsLostFragment();
-        listPetsFragment.addPosts(posts);
-
-        MapPetsFoundFragment mapPetsFragment = new MapPetsFoundFragment();
-        listPetsFragment.addPosts(posts);
-
-        adapter.resetFragments();
-        adapter.addFragment(listPetsFragment, getString(R.string.title_section1));
-        adapter.addFragment(mapPetsFragment, getString(R.string.title_section2));
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onFailedGotPost(String message) {
-
-    }
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void showError(String message) {
-
-    }
 }

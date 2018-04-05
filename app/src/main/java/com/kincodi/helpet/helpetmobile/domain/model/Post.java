@@ -1,6 +1,9 @@
 package com.kincodi.helpet.helpetmobile.domain.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.sql.Array;
 import java.util.Date;
@@ -10,7 +13,7 @@ import java.util.List;
  * Created by Julio on 20/02/2018.
  */
 
-public class Post implements Serializable {
+public class Post implements Parcelable {
 
     private String name;
     private String description;
@@ -107,14 +110,6 @@ public class Post implements Serializable {
         this.type = type;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public Post(String name, String description, String race, String age, String kind, Date date, Double[] position, String phone) {
         this.name = name;
         this.description = description;
@@ -125,4 +120,43 @@ public class Post implements Serializable {
         this.position = position;
         this.phone = phone;
     }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeString(race);
+        parcel.writeString(age);
+        parcel.writeString(kind);
+        parcel.writeString(gender);
+    }
+
+    public Post(Parcel in) {
+        readFromParcel(in);
+    }
+
+    private void readFromParcel(Parcel in) {
+        name = in.readString();
+        description = in.readString();
+        race = in.readString();
+        age = in.readString();
+        kind = in.readString();
+        gender = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>() {
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
 }

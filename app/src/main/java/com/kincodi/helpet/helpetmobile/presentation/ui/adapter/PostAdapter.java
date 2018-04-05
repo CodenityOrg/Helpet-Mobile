@@ -55,8 +55,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public void bind(final Post post,Context context){
 
             Picasso.with(context)
-                    .load((Uri) post.getPhotos())
-                    .placeholder(0)
+                    .load("http://172.20.10.5:3000" + post.getPhotos().get(0).getPath())
                     .into(img);
 
             name.setText(post.getName());

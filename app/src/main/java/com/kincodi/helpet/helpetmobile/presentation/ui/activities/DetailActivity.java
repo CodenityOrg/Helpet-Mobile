@@ -22,6 +22,7 @@ public class DetailActivity extends AppCompatActivity implements GetPostInfoPres
     ViewPager mViewPager;
     GetPostInfoPresenterImpl getPostInfoPresenter;
     PostRepositoryImpl postRepository;
+    PetFragmentPageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +35,16 @@ public class DetailActivity extends AppCompatActivity implements GetPostInfoPres
         tabs.setupWithViewPager(mViewPager);
         postRepository = new PostRepositoryImpl();
 
-        String postId = "";
+        //String postId = getIntent().getExtras().getString("postId");
+        String postId = "5ac626493976ca565a29a643";
 
-        //getPostInfoPresenter = new GetPostInfoPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository, this);
-        //getPostInfoPresenter.getInfo(postId);
+        getPostInfoPresenter = new GetPostInfoPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository, this);
+        getPostInfoPresenter.getInfo(postId);
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        PetFragmentPageAdapter adapter = new PetFragmentPageAdapter(getSupportFragmentManager());
+        adapter = new PetFragmentPageAdapter(getSupportFragmentManager());
+
         adapter.addFragment(new InfoFragment(), getString(R.string.title_info));
         adapter.addFragment(new MapFragment(), getString(R.string.title_map));
         viewPager.setAdapter(adapter);
@@ -70,6 +73,24 @@ public class DetailActivity extends AppCompatActivity implements GetPostInfoPres
 
     @Override
     public void gotInfo(Post post) {
+        adapter.resetFragments();
+
+        InfoFragment infoFragment = new InfoFragment();
+
+        Bundle args1 = new Bundle();
+        args1.putParcelable("post", post);
+        infoFragment.setArguments(args1);
+
+        MapFragment mapFragment = new MapFragment();
+
+        Bundle args2 = new Bundle();
+        args2.putParcelable("post", post);
+        infoFragment.setArguments(args2);
+
+
+        adapter.addFragment(infoFragment, getString(R.string.title_info));
+        adapter.addFragment(mapFragment, getString(R.string.title_map));
+        adapter.notifyDataSetChanged();
 
     }
 }

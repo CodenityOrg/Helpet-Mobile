@@ -24,6 +24,7 @@ import com.kincodi.helpet.helpetmobile.domain.model.Post;
 import com.kincodi.helpet.helpetmobile.domain.repository.PostRepository;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.GetListPostPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.GetListPostPresenterImpl;
+import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.User.LoginUserPresenterImpl;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.User.RegisterUserPresenterImpl;
 import com.kincodi.helpet.helpetmobile.presentation.ui.activities.DetailActivity;
 import com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivity;
@@ -36,7 +37,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ListPetsLostFragment extends Fragment {
+public class ListPetsLostFragment extends Fragment implements GetListPostPresenter.View {
 
     private RecyclerView recycler;
     private RecyclerView.LayoutManager lManager;
@@ -46,13 +47,46 @@ public class ListPetsLostFragment extends Fragment {
     private List<Post> mPosts = new ArrayList<>();
     private PostAdapter postAdapter = new PostAdapter(mPosts);
 
+
+
     public ListPetsLostFragment() {
     }
 
+    @Override
+    public void onSuccessGotPost(List<Post> posts) {
+        postAdapter.addPosts(posts);
+        postAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void onFailedGotPost(String message) {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        postRepository = new PostRepositoryImpl();
+
+        presenter = new GetListPostPresenterImpl(
+                ThreadExecutor.getInstance(),
+                MainThreadImpl.getInstance(),
+                postRepository, this);
+        presenter.getPosts(0);
     }
 
     @Override
@@ -73,18 +107,11 @@ public class ListPetsLostFragment extends Fragment {
 
         recycler = view.findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
-        postRepository = new PostRepositoryImpl();
         lManager = new LinearLayoutManager(getActivity());
         recycler.setLayoutManager(lManager);
         recycler.setAdapter(postAdapter);
 
         return view;
-    }
-
-
-    public void addPosts(List<Post> posts) {
-        postAdapter.addPosts(posts);
-        postAdapter.notifyDataSetChanged();
     }
 
 

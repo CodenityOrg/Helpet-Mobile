@@ -29,6 +29,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kincodi.helpet.helpetmobile.R;
+import com.kincodi.helpet.helpetmobile.domain.executor.impl.ThreadExecutor;
+import com.kincodi.helpet.helpetmobile.domain.model.Post;
+import com.kincodi.helpet.helpetmobile.presentation.presenters.GetListPostPresenter;
+import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.GetListPostPresenterImpl;
+import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
+import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +45,7 @@ public class MapPetsLostFragment extends Fragment implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
-        ActivityCompat.OnRequestPermissionsResultCallback {
+        ActivityCompat.OnRequestPermissionsResultCallback, GetListPostPresenter.View{
 
     GoogleMap googleMap;
     SupportMapFragment mapFragment;
@@ -50,11 +58,24 @@ public class MapPetsLostFragment extends Fragment implements
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 2;
     private Marker mMarkerLastLocation;
+    PostRepositoryImpl postRepository;
+    GetListPostPresenter presenter;
 
     public MapPetsLostFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        postRepository = new PostRepositoryImpl();
+
+        presenter = new GetListPostPresenterImpl(
+                ThreadExecutor.getInstance(),
+                MainThreadImpl.getInstance(),
+                postRepository, this);
+        presenter.getPosts(0);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -165,6 +186,32 @@ public class MapPetsLostFragment extends Fragment implements
             return;
         }
         LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+
+    }
+
+
+    @Override
+    public void onSuccessGotPost(List<Post> posts) {
+
+    }
+
+    @Override
+    public void onFailedGotPost(String message) {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showError(String message) {
 
     }
 }

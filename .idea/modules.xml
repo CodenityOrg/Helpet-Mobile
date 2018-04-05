@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\AndroidStudioProjects\HelpetMobile\Helpet-Mobile.iml" filepath="D:\AndroidStudioProjects\HelpetMobile\Helpet-Mobile.iml" />
+      <module fileurl="file://D:/AndroidStudioProjects/HelpetMobile/Helpet-Mobile.iml" filepath="D:/AndroidStudioProjects/HelpetMobile/Helpet-Mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelpetMobile.iml" filepath="$PROJECT_DIR$/HelpetMobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
