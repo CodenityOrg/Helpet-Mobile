@@ -46,8 +46,8 @@ public class RegisterUserInteractorImpl extends AbstractInteractor implements Re
         user.setPhone(mPhone);
         user.setPassword(mPassword);
         Response result = mUserRepository.register(user);
-        if(result!=null){
-            if(result.isSuccessful()   ){
+        if (result!=null) {
+            if (result.isSuccessful()) {
                 loginSuccess();
             }else{
                 String message = getMessage(result.code());

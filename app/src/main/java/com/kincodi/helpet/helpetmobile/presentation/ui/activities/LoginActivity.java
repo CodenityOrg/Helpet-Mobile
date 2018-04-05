@@ -63,6 +63,13 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
             loginUserPresenter.login(email,password);
 
     }
+
+    @OnClick(R.id.btnRegister)
+    public void showRegister() {
+        startActivity(new Intent(this, RegisterActivity.class));
+        finish();
+    }
+
     @Override public void showProgress() {
         progressDialog.setMessage(getString(R.string.login_loading));
         progressDialog.show();
@@ -73,9 +80,5 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
     @Override public void showError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
     }
-    /*@OnClick(R.id.btnSignUp)
-    public void SingUp(){
-        Intent i = new Intent(this,RegisterActivity.class);
-        startActivity(i);
-    }*/
+
 }

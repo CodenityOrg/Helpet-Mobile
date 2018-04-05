@@ -32,8 +32,8 @@ public class GetListPostPresenterImpl extends AbstractPresenter implements GetLi
     @Override public void onFailedGetPosts(String message) {
         mView.onFailedGotPost(message);
     }
-    @Override public void getPosts() {
-        GetListPostInteractorImpl interactor = new GetListPostInteractorImpl(mExecutor,mMainThread,mPostRepository,this);
+    @Override public void getPosts(String type) {
+        GetListPostInteractorImpl interactor = new GetListPostInteractorImpl(mExecutor,mMainThread,mPostRepository,this, type);
         interactor.execute();
     }
 }

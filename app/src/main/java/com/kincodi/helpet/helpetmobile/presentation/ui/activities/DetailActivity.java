@@ -9,8 +9,6 @@ import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.Detail.InfoFragment;
 import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.Detail.MapFragment;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.ListPetsFragment;
-import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.MapPetsFragment;
 
 public class DetailActivity extends AppCompatActivity {
     ViewPager mViewPager;

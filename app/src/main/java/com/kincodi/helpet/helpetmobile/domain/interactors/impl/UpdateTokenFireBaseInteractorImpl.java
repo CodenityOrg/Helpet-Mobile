@@ -20,12 +20,11 @@ public class UpdateTokenFireBaseInteractorImpl extends AbstractInteractor implem
     public UpdateTokenFireBaseInteractorImpl(Executor threadExecutor,
                                              MainThread mainThread,
                                              UserRepositoryImpl userRepository,
-                                             String firebaseId, String oldFirebaseId) {
+                                             String firebaseId) {
         super(threadExecutor, mainThread);
         mUserRepositoryImpl = userRepository;
         mMainThread = mainThread;
         mFirebaseId = firebaseId;
-        mOldFirebaseId = oldFirebaseId;
     }
 
     @Override

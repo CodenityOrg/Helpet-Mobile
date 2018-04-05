@@ -15,6 +15,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 
 /**
  * Created by Julio on 20/02/2018.
@@ -42,7 +43,7 @@ public interface APIPostRest {
             @Part("name") String name);
 
 
-    @GET("posts")
-    Call<List<Post>> getCards();
+    @GET("/posts")
+    Call<List<Post>> getPosts(@Query("type") String type);
 
 }

@@ -23,12 +23,12 @@ import com.kincodi.helpet.helpetmobile.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MapPetsFragment extends Fragment{
+public class MapPetsFoundFragment extends Fragment{
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private static final int PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 2;
     GoogleMap googleMap;
     SupportMapFragment mapFragment;
-    public MapPetsFragment() {
+    public MapPetsFoundFragment() {
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

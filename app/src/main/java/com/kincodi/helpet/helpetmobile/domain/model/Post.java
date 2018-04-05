@@ -20,6 +20,15 @@ public class Post implements Serializable {
     private Date date;
     private Double[] position;
     private String phone;
+    private List<Photo> photos;
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
 
     public String getName() {
         return name;

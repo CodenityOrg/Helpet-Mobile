@@ -20,10 +20,8 @@ public class UpdateTokenFireBasePresenterImpl extends AbstractPresenter implemen
     }
     @Override public void updateTokenFireBase() {
         String token = FirebaseInstanceId.getInstance().getToken();
-        String oldToken = UserSharedPreferences.getFireBaseId();
-        UpdateTokenFireBaseInteractorImpl interactor = new UpdateTokenFireBaseInteractorImpl(mExecutor,mMainThread,userRepository,token,oldToken);
+        UpdateTokenFireBaseInteractorImpl interactor = new UpdateTokenFireBaseInteractorImpl(mExecutor,mMainThread,userRepository,token);
         interactor.execute();
-        UserSharedPreferences.setFireBaseId(token);
 
     }
 }

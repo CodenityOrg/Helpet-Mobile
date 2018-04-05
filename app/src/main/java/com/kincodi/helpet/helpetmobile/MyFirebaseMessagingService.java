@@ -37,35 +37,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         if(data!=null){
 
-            int notification_type_id =  (data.get("Notification_Type_id") != null ?  Integer.valueOf(data.get("Notification_Type_id")) : 0);
-            int bill_id = (data.get("Bill_number") != null ? Integer.valueOf(data.get("Bill_number")):0);
-            String description = data.get("description")!=null? data.get("description"):"";
-            int id = data.get("id")!=null? Integer.valueOf(data.get("id")) : 0;
-            String date = data.get("date")!=null? data.get("date"):"";
-            int request_id = data.get("Request_id")!=null?  Integer.valueOf(data.get("Request_id")) :0;
-            int user_id = data.get("User_id") != null? Integer.valueOf(data.get("User_id")) : 0;
-            double latitude = data.get("latitude") != null ? Double.valueOf(data.get("latitude")) : 0.0;
-            double longitude = data.get("longitude") != null ? Double.valueOf(data.get("longitude")) : 0.0;
-
             Notification notification = new Notification();
 
-            notification.setNotification_Type_id(notification_type_id);
-            notification.setBill_id(bill_id);
-            notification.setDescription(description);
-            notification.setId(id);
-            notification.setDate(date);
-            notification.setRequest_id(request_id);
-            notification.setUser_id(user_id);
-            notification.setLatitude(latitude);
-            notification.setLongitude(longitude);
-
-            if(StateSharedPreferences.isAvailable()){
-                if(notification.getNotification_Type_id()!=0){
-                    createNotification(notification);
-                }else{
-                    EventBus.getDefault().post(notification);
-                }
-            }
         }
     }
     private void createNotification(Notification notification) {

@@ -65,9 +65,8 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:textColor="#3fde82"
-            android:text="FACEBOOK"
-            android:paddingLeft="20dp"
-            android:drawableLeft="@mipmap/facebooklogo"
+            android:id="@+id/btnRegister"
+            android:text="Registro"
             android:background="@drawable/btn_onwhite"/>
     </LinearLayout>
 

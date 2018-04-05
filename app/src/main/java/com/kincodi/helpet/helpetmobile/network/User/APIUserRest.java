@@ -25,7 +25,7 @@ public interface APIUserRest {
     @POST("/users")
     Call<User> register(@Body User user);
 
-    @PUT("user/add-update-firebase-id")
-    Call<ResponseBody> updateFireBaseId(@Query("fireBase_id") String fireBaseId, @Query("old_fireBase_id") String oldFireBaseId);
+    @PUT("users/firebase-token")
+    Call<ResponseBody> updateFireBaseId(@Query("firebaseToken") String firebaseToken);
 
 }
