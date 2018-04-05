@@ -8,57 +8,140 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@mipmap/fondo">
 
         <ImageView
             android:layout_weight="5"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/gatito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
             <TextView
-
-                android:text="NOMRE"
+                android:text="Me llamo Micho"
+                android:gravity="center"
+                android:textColor="#3fde82"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_margin="6dp"/>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:text="MACHO"
+                <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="FELINO"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@mipmap/icogenero"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        />
+                    <TextView
+                        android:text="Macho"
+                        android:id="@+id/txtRace"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="12dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="FECHA"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp">
+
+                    <ImageView
+                        android:src="@mipmap/icoalimentos"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                    <TextView
+                        android:text="Felino"
+                        android:id="@+id/txtKind"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@mipmap/icohuella"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:text="07/03/18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"/>
+                </LinearLayout>
             </LinearLayout>
-            <TextView
-                android:text="DESCRIPCION"
+            <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icohuella"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:text="Es un pequeño con una leccion en la pata"
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="12dp"/>
+            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
-                <TextView
-                    android:text="CONTACTO NAME"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@mipmap/icousuario"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:text="Juan Perez"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="PHONE"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@mipmap/icollama"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:text="990 892 786"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

@@ -5,17 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/fondo"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/edtName"
@@ -33,7 +36,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
 
             <Spinner
                 android:id="@+id/spSpecies"
@@ -52,11 +56,13 @@
             android:id="@+id/edtDescription"
             android:hint="@string/description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
             <EditText
                 android:layout_weight="1"
                 android:id="@+id/edtLocation"
@@ -64,16 +70,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
-                android:drawableEnd="@mipmap/ic_launcher"
-                android:layout_width="wrap_content"
+                android:drawableEnd="@mipmap/icogps"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:background="#00ffffff"
                 android:id="@+id/btn_show_map"/>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
 
             <EditText
                 android:id="@+id/edtPersonContact"
@@ -101,8 +109,9 @@
 
             <ImageButton
                 android:id="@+id/btnImg1"
+                android:background="#00ffffff"
                 android:contentDescription="@null"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/icofotomas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -118,6 +127,9 @@
             android:id="@+id/btnPublisher"
             android:text="@string/publisher"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:textColor="#3fde82"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_offgreen"/>
     </LinearLayout>
 </LinearLayout>
