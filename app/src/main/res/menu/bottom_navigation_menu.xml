@@ -7,17 +7,19 @@
         android:enabled="true"
         android:icon="@mipmap/icoperdido"
         android:title="Perdidos"/>
+
     <item
         app:showAsAction="ifRoom"
         android:id="@+id/action_found"
         android:enabled="true"
         android:icon="@mipmap/icoencontrado"
         android:title="Encontrados"/>
+
     <item
         app:showAsAction="ifRoom"
-        android:id="@+id/action_mas"
+        android:id="@+id/action_more"
         android:enabled="true"
-        android:icon="@mipmap/icomas"
+        android:icon="@mipmap/ic_launcher"
         android:title="Mas"/>
 
 </menu>
