@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content" />
 
             <Spinner
-                android:id="@+id/snpKind"
+                android:id="@+id/spKind"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -36,38 +36,55 @@
             android:layout_height="wrap_content">
 
             <Spinner
+                android:id="@+id/spSpecies"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Spinner
+                android:id="@+id/spRace"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
         <EditText
+            android:id="@+id/edtDescription"
             android:hint="@string/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <EditText
-            android:hint="@string/location"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_weight="1"
+                android:id="@+id/edtLocation"
+                android:hint="@string/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:drawableEnd="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_show_map"/>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/edtPersonContact"
                 android:hint="@string/contact"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:hint="@string/number_contect"
-
+                android:id="@+id/edtPhone"
+                android:hint="@string/number_contact"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -98,6 +115,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnPublisher"
             android:text="@string/publisher"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
