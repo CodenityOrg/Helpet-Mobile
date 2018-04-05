@@ -73,9 +73,10 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         postRepository = new PostRepositoryImpl();
         initPresenters();
         ButterKnife.bind(this);
-        String[] kinds = {"Encontrada","Perdida"};
+        String[] kinds = {"Encontrado","Perdido"};
         String[] species = {"Gato","Perro"};
         String[] races = {"Snauzer","Pastor Aleman"};
+
         spKind.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, kinds));
         spSpecies.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, species));
         spRace.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, races));
@@ -188,8 +189,16 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
         if(Validation.isOnline()){
             Double[] position  = new Double[2];
             Date  date = new Date();
+            int type;
             String name = edtName.getText().toString();
             mKind = spKind.getSelectedItem().toString();
+
+            if (mKind == "Encontrado") {
+                type = 0;
+            } else {
+                type = 1;
+            }
+
             mSpecies = spSpecies.getSelectedItem().toString();
             mRace = spRace.getSelectedItem().toString();
             String description = edtDescription.getText().toString();
@@ -197,7 +206,7 @@ public class NewPostActivity extends AppCompatActivity implements NewPostPresent
             position[1] = -70.2485018;
             String phone = edtPhone.getText().toString();
             showProgress();
-            newPostPresenter.createPost(name,description,mRace,"",mKind,date,position,phone,photoPaths);
+            newPostPresenter.createPost(name,description,mRace,"",mKind,date,position,phone, type, photoPaths);
         }else
             Validation.showNoConnectionDialog(this);
 
