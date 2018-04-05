@@ -35,6 +35,7 @@
             android:hint="Celular"
             android:textColor="#ffffff"
             android:textColorHint="#ffff"
+            android:inputType="phone"
             android:background="@drawable/edtwithe"/>
         <EditText
             android:id="@+id/edtEmail"
@@ -44,6 +45,7 @@
             android:hint="Email"
             android:textColor="#ffffff"
             android:textColorHint="#ffff"
+            android:inputType="textEmailAddress"
             android:background="@drawable/edtwithe"/>
         <EditText
             android:id="@+id/edtPassword"
@@ -53,6 +55,7 @@
             android:textColor="#ffffff"
             android:hint="**********"
             android:textColorHint="#ffff"
+            android:inputType="textPassword"
             android:background="@drawable/edtwithe"/>
         <Button
             android:id="@+id/btnSignUp"
