@@ -25,6 +25,7 @@ public class GetInfoInteractorImpl extends AbstractInteractor implements GetInfo
                                      String postId,
                                      GetInfoInteractor.Callback callback) {
         super(threadExecutor, mainThread);
+        mMainThread = mainThread;
         mPostRepositoryImpl = postRepository;
         mCallback = callback;
         mPostId = postId;

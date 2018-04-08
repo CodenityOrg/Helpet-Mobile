@@ -37,7 +37,7 @@ public class GetPostInfoPresenterImpl extends AbstractPresenter implements GetPo
     @Override
     public void getInfo(String id) {
         GetInfoInteractorImpl getInfoInteractor = new GetInfoInteractorImpl(
-                mExecutor,mMainThread, mPostRepository,id,
+                mExecutor, mMainThread, mPostRepository,id,
                 this);
         getInfoInteractor.execute();
     }

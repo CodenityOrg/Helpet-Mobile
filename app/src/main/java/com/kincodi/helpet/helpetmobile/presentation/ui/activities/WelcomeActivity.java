@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kincodi.helpet.helpetmobile.R;
+import com.kincodi.helpet.helpetmobile.domain.model.User;
 import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PrefManager;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -33,6 +34,14 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (User.isLogged()) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            return;
+        }
+
+
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();

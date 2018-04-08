@@ -8,6 +8,7 @@ import com.kincodi.helpet.helpetmobile.R;
 
 public class PostLostFragment extends Fragment {
     public PostLostFragment() {}
+
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

@@ -18,10 +18,9 @@ import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.Detail.MapFragm
 import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
 import com.kincodi.helpet.helpetmobile.threading.MainThreadImpl;
 
-public class DetailActivity extends AppCompatActivity implements GetPostInfoPresenter.View {
+public class DetailActivity extends AppCompatActivity {
+
     ViewPager mViewPager;
-    GetPostInfoPresenterImpl getPostInfoPresenter;
-    PostRepositoryImpl postRepository;
     PetFragmentPageAdapter adapter;
 
     @Override
@@ -33,13 +32,6 @@ public class DetailActivity extends AppCompatActivity implements GetPostInfoPres
         setupViewPager(mViewPager);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(mViewPager);
-        postRepository = new PostRepositoryImpl();
-
-        //String postId = getIntent().getExtras().getString("postId");
-        String postId = "5ac626493976ca565a29a643";
-
-        getPostInfoPresenter = new GetPostInfoPresenterImpl(ThreadExecutor.getInstance(), MainThreadImpl.getInstance(), postRepository, this);
-        getPostInfoPresenter.getInfo(postId);
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -48,49 +40,6 @@ public class DetailActivity extends AppCompatActivity implements GetPostInfoPres
         adapter.addFragment(new InfoFragment(), getString(R.string.title_info));
         adapter.addFragment(new MapFragment(), getString(R.string.title_map));
         viewPager.setAdapter(adapter);
-
     }
 
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void showError(String message) {
-
-    }
-
-    @Override
-    public void onFailed(String message) {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void gotInfo(Post post) {
-        adapter.resetFragments();
-
-        InfoFragment infoFragment = new InfoFragment();
-
-        Bundle args1 = new Bundle();
-        args1.putParcelable("post", post);
-        infoFragment.setArguments(args1);
-
-        MapFragment mapFragment = new MapFragment();
-
-        Bundle args2 = new Bundle();
-        args2.putParcelable("post", post);
-        infoFragment.setArguments(args2);
-
-
-        adapter.addFragment(infoFragment, getString(R.string.title_info));
-        adapter.addFragment(mapFragment, getString(R.string.title_map));
-        adapter.notifyDataSetChanged();
-
-    }
 }

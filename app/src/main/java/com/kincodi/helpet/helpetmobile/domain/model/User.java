@@ -1,10 +1,17 @@
 package com.kincodi.helpet.helpetmobile.domain.model;
 
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.kincodi.helpet.helpetmobile.App;
+
 /**
  * Created by Julio on 20/02/2018.
  */
 
 public class User {
+
     private String Id;
     private String firstName;
     private String lastName;
@@ -13,13 +20,11 @@ public class User {
     private String password;
 
     private String token;
+    private static SharedPreferences prefs = App.getInstance().getSharedPreferences("auth", Context.MODE_PRIVATE);;
+    private static SharedPreferences.Editor editor = prefs.edit();;
 
     public String getToken() {
         return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getId() {
@@ -58,4 +63,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public static void setLogged(boolean val) {
+        editor.putBoolean("logged", val);
+    }
+
+    public static boolean isLogged() {
+        return prefs.getBoolean("logged", false);
+    }
+
+
 }

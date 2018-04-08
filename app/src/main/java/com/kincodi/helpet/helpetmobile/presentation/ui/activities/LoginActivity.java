@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.kincodi.helpet.helpetmobile.R;
 import com.kincodi.helpet.helpetmobile.domain.executor.impl.ThreadExecutor;
+import com.kincodi.helpet.helpetmobile.domain.model.User;
 import com.kincodi.helpet.helpetmobile.domain.repository.UserRepository;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.LoginUserPresenter;
 import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.User.LoginUserPresenterImpl;
@@ -21,12 +22,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity implements LoginUserPresenter.View{
+
     @BindView(R.id.edtEmail) EditText edtEmail;
     @BindView(R.id.edtPassword) EditText edtPassword;
 
     private LoginUserPresenterImpl loginUserPresenter;
     ProgressDialog progressDialog;
     private UserRepository userRepository;
+
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -48,20 +52,23 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         hideProgress();
         setResult(Activity.RESULT_OK);
         finish();
-        Intent i = new Intent(this,MainActivity.class);
+
+        User.setLogged(true);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
+
     @Override public void onFailed(String message) {
         hideProgress();
         showError(message);
     }
+
     @OnClick(R.id.btnSigIn)
     @Override public void loginNormal() {
-            String email = edtEmail.getText().toString();
-            String password = edtPassword.getText().toString();
-            showProgress();
-            loginUserPresenter.login(email,password);
-
+        String email = edtEmail.getText().toString();
+        String password = edtPassword.getText().toString();
+        showProgress();
+        loginUserPresenter.login(email, password);
     }
 
     @OnClick(R.id.btnRegister)
@@ -74,10 +81,14 @@ public class LoginActivity extends AppCompatActivity implements LoginUserPresent
         progressDialog.setMessage(getString(R.string.login_loading));
         progressDialog.show();
     }
-    @Override public void hideProgress() {
+
+    @Override
+    public void hideProgress() {
         progressDialog.hide();
     }
-    @Override public void showError(String message) {
+
+    @Override
+    public void showError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
     }
 

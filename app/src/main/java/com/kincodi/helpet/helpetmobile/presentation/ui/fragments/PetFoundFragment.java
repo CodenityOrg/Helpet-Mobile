@@ -36,8 +36,8 @@ public class PetFoundFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_pet_found, container, false);
-        mViewPager =(ViewPager) v.findViewById(R.id.pager);
-        tabs =(TabLayout) v.findViewById(R.id.tabs);
+        mViewPager = v.findViewById(R.id.pager);
+        tabs = v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
 

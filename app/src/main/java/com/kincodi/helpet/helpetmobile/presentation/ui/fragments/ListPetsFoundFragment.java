@@ -1,96 +1,25 @@
 package com.kincodi.helpet.helpetmobile.presentation.ui.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.kincodi.helpet.helpetmobile.R;
-import com.kincodi.helpet.helpetmobile.domain.model.Post;
-import com.kincodi.helpet.helpetmobile.presentation.presenters.GetListPostPresenter;
-import com.kincodi.helpet.helpetmobile.presentation.presenters.impl.Post.GetListPostPresenterImpl;
-import com.kincodi.helpet.helpetmobile.presentation.ui.activities.NewPostActivity;
-import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PetFragmentPageAdapter;
-import com.kincodi.helpet.helpetmobile.presentation.ui.adapter.PostAdapter;
-import com.kincodi.helpet.helpetmobile.storage.PostRepositoryImpl;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.kincodi.helpet.helpetmobile.presentation.ui.fragments.Base.PostsFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListPetsFoundFragment extends Fragment implements GetListPostPresenter.View{
-
-    private RecyclerView recycler;
-    private RecyclerView.LayoutManager lManager;
-    private FloatingActionButton fab;
-    private PostRepositoryImpl postRepository;
-    private GetListPostPresenterImpl presenter;
-    private List<Post> mPosts = new ArrayList<>();
-    private PostAdapter postAdapter;
-    private PetFragmentPageAdapter adapter;
+public class ListPetsFoundFragment extends PostsFragment {
 
     public ListPetsFoundFragment() {
-    }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_pets_found, container, false);
-        fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), NewPostActivity.class);
-                startActivity(i);
-            }
-        });
-        recycler = view.findViewById(R.id.recycler2);
-        recycler.setHasFixedSize(true);
-        postRepository = new PostRepositoryImpl();
-        postAdapter = new PostAdapter(mPosts);
-        lManager = new LinearLayoutManager(getActivity());
-        recycler.setLayoutManager(lManager);
-        recycler.setAdapter(postAdapter);
-        return view;
+        super();
     }
 
     @Override
-    public void showProgress() {
-
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        presenter.getPosts(1);
     }
 
-    @Override
-    public void hideProgress() {
-
-    }
-
-    @Override
-    public void showError(String message) {
-
-    }
-
-    @Override
-    public void onSuccessGotPost(List<Post> posts) {
-        Log.d("ASDAFSDFASDF", String.valueOf(posts));
-        addPosts(posts);
-    }
-
-    @Override
-    public void onFailedGotPost(String message) {
-
-    }
-
-
-    public void addPosts(List<Post> posts) {
-        postAdapter.addPosts(posts);
-        postAdapter.notifyDataSetChanged();
-    }
 }

@@ -12,9 +12,9 @@ import com.kincodi.helpet.helpetmobile.domain.model.Post;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
-    //private final OnItemClickListener listener;
-
     private List<Post> posts;
+    View.OnClickListener listener ;
+
     public PostAdapter(List<Post> mPosts) {
         posts = mPosts;
     }
@@ -26,7 +26,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @Override
     public PostAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pet, parent, false);
-        return new PostViewHolder(v);
+        return new PostViewHolder(v, listener);
     }
     @Override public void onBindViewHolder(PostAdapter.PostViewHolder holder, int position) {
         Context context = holder.itemView.getContext();
@@ -37,20 +37,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return posts.size();
     }
 
-    public class PostViewHolder extends RecyclerView.ViewHolder {
+    public void onClickItem(View.OnClickListener mListener) {
+        listener = mListener;
+    }
+
+    public class PostViewHolder extends RecyclerView.ViewHolder{
+
         private ImageView img;
         private TextView name;
         private TextView description;
         private TextView kind;
         private TextView race;
 
-        public PostViewHolder(View v) {
+        public PostViewHolder(View v, View.OnClickListener listener) {
             super(v);
-            img = (ImageView) v.findViewById(R.id.imgPets);
-            name = (TextView) v.findViewById(R.id.txtName);
-            description = (TextView) v.findViewById(R.id.txtDescription);
-            kind = (TextView) v.findViewById(R.id.txtKind);
-            race = (TextView) v.findViewById(R.id.txtRace);
+            img =  v.findViewById(R.id.imgPets);
+            name =  v.findViewById(R.id.txtName);
+            description = v.findViewById(R.id.txtDescription);
+            kind = v.findViewById(R.id.txtKind);
+            race = v.findViewById(R.id.txtRace);
+
+            v.setOnClickListener(listener);
         }
         public void bind(final Post post,Context context){
 

@@ -20,8 +20,6 @@ import java.util.List;
 public class PetLostFragment extends Fragment  {
     ViewPager mViewPager;
     TabLayout tabs;
-    private GetListPostPresenterImpl presenter;
-    private PostRepositoryImpl postRepository;
     private PetFragmentPageAdapter adapter;
 
     public PetLostFragment() {}
@@ -29,15 +27,12 @@ public class PetLostFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        postRepository = new PostRepositoryImpl();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_pet_lost, container, false);
-
-
-        mViewPager = (ViewPager) v.findViewById(R.id.pager);
-        tabs =(TabLayout) v.findViewById(R.id.tabs);
+        mViewPager =  v.findViewById(R.id.pager);
+        tabs = v.findViewById(R.id.tabs);
         setupViewPager(mViewPager);
         tabs.setupWithViewPager(mViewPager);
 
@@ -46,8 +41,13 @@ public class PetLostFragment extends Fragment  {
 
     private void setupViewPager(ViewPager viewPager) {
         adapter = new PetFragmentPageAdapter(getChildFragmentManager());
-        adapter.addFragment(new ListPetsLostFragment(), getString(R.string.title_section1));
-        adapter.addFragment(new MapPetsLostFragment(), getString(R.string.title_section2));
+
+        ListPetsLostFragment listPetsLostFragment = new ListPetsLostFragment();
+        MapPetsLostFragment mapPetsLostFragment = new MapPetsLostFragment();
+
+        adapter.addFragment(listPetsLostFragment, getString(R.string.title_section1));
+        adapter.addFragment(mapPetsLostFragment, getString(R.string.title_section2));
+
         viewPager.setAdapter(adapter);
     }
 
