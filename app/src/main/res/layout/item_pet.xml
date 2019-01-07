@@ -39,15 +39,15 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@mipmap/icogenero"
+                    android:src="@mipmap/icohuella"
                     android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    />
+                    android:layout_height="20dp" />
+
                 <TextView
-                    android:text="Macho"
-                    android:id="@+id/txtRace"
+                    android:text="Es un pequeño con una leccion en la pata"
+                    android:id="@+id/txtDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="12dp"/>
             </LinearLayout>
             <LinearLayout
@@ -72,17 +72,17 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@mipmap/icohuella"
+                    android:src="@mipmap/icoalimentos"
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
-
                 <TextView
-                    android:text="Es un pequeño con una leccion en la pata"
-                    android:id="@+id/txtDescription"
+                    android:text=""
+                    android:id="@+id/txtUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="12dp"/>
             </LinearLayout>
+
 
         </LinearLayout>
     </LinearLayout>

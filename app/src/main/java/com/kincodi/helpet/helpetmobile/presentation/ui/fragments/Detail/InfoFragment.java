@@ -86,10 +86,6 @@ public class InfoFragment extends Fragment implements GetPostInfoPresenter.View 
 
     @Override
     public void gotInfo(Post post) {
-        txtKind.setText(post.getKind());
-        txtName.setText(post.getName());
-        txtRace.setText(post.getRace());
-        txtCellphone.setText(post.getPhone());
         txtDescription.setText(post.getDescription());
 
         for (Photo photo: post.getPhotos()) {

@@ -44,10 +44,10 @@ public interface APIPostRest {
             @Part("name") String name);
 
 
-    @GET("/posts")
+    @GET("/api/posts")
     Call<List<Post>> getPosts(@Query("type") int type);
 
-    @GET("/posts/{id}")
+    @GET("/api/posts/{id}")
     Call<Post> getPost(@Path("id") String id);
 
 }

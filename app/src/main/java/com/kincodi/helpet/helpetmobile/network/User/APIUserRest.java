@@ -16,16 +16,16 @@ import retrofit2.http.Query;
 public interface APIUserRest {
 
 
-    @POST("/login")
+    @POST("/api/login")
     Call<User> login(@Body User user);
 
-    @POST("/login-oauth")
+    @POST("/api/login-oauth")
     Call<User> loginOAuth(@Body User user);
 
-    @POST("/users")
+    @POST("/api/users")
     Call<User> register(@Body User user);
 
-    @PUT("users/firebase-token")
+    @PUT("/api/users/firebase-token")
     Call<ResponseBody> updateFireBaseId(@Query("firebaseToken") String firebaseToken);
 
 }

@@ -20,6 +20,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:textColorHint="#ffff"
             android:background="@drawable/edtwithe"/>
         <EditText

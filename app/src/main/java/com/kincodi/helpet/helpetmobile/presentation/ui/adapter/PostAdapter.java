@@ -44,31 +44,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public class PostViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView img;
-        private TextView name;
         private TextView description;
-        private TextView kind;
-        private TextView race;
 
         public PostViewHolder(View v, View.OnClickListener listener) {
             super(v);
             img =  v.findViewById(R.id.imgPets);
-            name =  v.findViewById(R.id.txtName);
             description = v.findViewById(R.id.txtDescription);
-            kind = v.findViewById(R.id.txtKind);
-            race = v.findViewById(R.id.txtRace);
 
             v.setOnClickListener(listener);
         }
         public void bind(final Post post,Context context){
 
             Picasso.with(context)
-                    .load("http://172.20.10.5:3000" + post.getPhotos().get(0).getPath())
+                    .load(post.getPhotos().get(0).getThumbnailPath())
                     .into(img);
 
-            name.setText(post.getName());
             description.setText(post.getDescription());
-            race.setText(post.getRace());
-            kind.setText(post.getKind());
         }
 
     }
